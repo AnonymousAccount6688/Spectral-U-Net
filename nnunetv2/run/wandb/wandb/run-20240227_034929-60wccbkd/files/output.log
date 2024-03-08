@@ -1,0 +1,31 @@
+====================<class 'nnunetv2.training.network.model.waveunet.unet.UNet'>====================
+lr: 0.01
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset003_Cirrus', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [128, 256, 256], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 169.0, 'mean': 40.45668029785156, 'median': 36.0, 'min': 0.0, 'percentile_00_5': 9.0, 'percentile_99_5': 106.0, 'std': 19.84197998046875}}}
+2024-02-27 03:49:32.847461: unpacking dataset...
+2024-02-27 03:49:45.276706: unpacking done...
+2024-02-27 03:49:45.279577: do_dummy_2d_data_aug: False
+2024-02-27 03:49:45.281886: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-27 03:49:45.283448: The split file contains 3 splits.
+2024-02-27 03:49:45.284743: Desired fold for training: 0
+2024-02-27 03:49:45.285692: This split has 16 training and 8 validation cases.
+==================batch size: 49==================
+2024-02-27 03:49:45.388751: Unable to plot network architecture:
+2024-02-27 03:49:45.390184: No module named 'hiddenlayer'
+===================debug: False===================
+lr: 0.01
+2024-02-27 03:49:45.491963:
+2024-02-27 03:49:45.493069: Epoch 0
+2024-02-27 03:49:45.494026: start training, 250
+2024-02-27 03:49:45.494948: learning rate: 0.01
+================num of epochs: 250================
+wandb: WARNING Calling wandb.login() after wandb.init() has no effect.
+using pin_memory on device 0
+2024-02-27 03:52:28.157024: finished training
+2024-02-27 03:52:28.408065: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-27 03:52:28.411100: The split file contains 3 splits.
+2024-02-27 03:52:28.412370: Desired fold for training: 0

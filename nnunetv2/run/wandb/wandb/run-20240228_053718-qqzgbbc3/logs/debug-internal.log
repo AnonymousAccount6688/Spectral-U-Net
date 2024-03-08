@@ -1,0 +1,50 @@
+2024-02-28 05:37:18,899 INFO    StreamThr :145072 [internal.py:wandb_internal():86] W&B internal server running at pid: 145072, started at: 2024-02-28 05:37:18.896463
+2024-02-28 05:37:18,903 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: status
+2024-02-28 05:37:18,907 INFO    WriterThread:145072 [datastore.py:open_for_write():85] open: wandb/wandb/run-20240228_053718-qqzgbbc3/run-qqzgbbc3.wandb
+2024-02-28 05:37:18,919 DEBUG   SenderThread:145072 [sender.py:send():369] send: header
+2024-02-28 05:37:18,946 DEBUG   SenderThread:145072 [sender.py:send():369] send: run
+2024-02-28 05:37:18,956 INFO    SenderThread:145072 [sender.py:_maybe_setup_resume():737] checking resume status for None/Cirrus_0/qqzgbbc3
+2024-02-28 05:37:19,369 INFO    SenderThread:145072 [dir_watcher.py:__init__():211] watching files in: wandb/wandb/run-20240228_053718-qqzgbbc3/files
+2024-02-28 05:37:19,369 INFO    SenderThread:145072 [sender.py:_start_run_threads():1100] run started: qqzgbbc3 with start time 1709116638.895652
+2024-02-28 05:37:19,378 DEBUG   SenderThread:145072 [sender.py:send_request():396] send_request: summary_record
+2024-02-28 05:37:19,380 INFO    SenderThread:145072 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-02-28 05:37:19,394 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: check_version
+2024-02-28 05:37:19,394 DEBUG   SenderThread:145072 [sender.py:send_request():396] send_request: check_version
+2024-02-28 05:37:19,526 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: run_start
+2024-02-28 05:37:19,548 DEBUG   HandlerThread:145072 [system_info.py:__init__():31] System info init
+2024-02-28 05:37:19,548 DEBUG   HandlerThread:145072 [system_info.py:__init__():46] System info init done
+2024-02-28 05:37:19,548 INFO    HandlerThread:145072 [system_monitor.py:start():181] Starting system monitor
+2024-02-28 05:37:19,549 INFO    SystemMonitor:145072 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2024-02-28 05:37:19,550 INFO    HandlerThread:145072 [system_monitor.py:probe():201] Collecting system info
+2024-02-28 05:37:19,552 INFO    SystemMonitor:145072 [interfaces.py:start():190] Started cpu monitoring
+2024-02-28 05:37:19,553 INFO    SystemMonitor:145072 [interfaces.py:start():190] Started disk monitoring
+2024-02-28 05:37:19,556 INFO    SystemMonitor:145072 [interfaces.py:start():190] Started gpu monitoring
+2024-02-28 05:37:19,557 INFO    SystemMonitor:145072 [interfaces.py:start():190] Started memory monitoring
+2024-02-28 05:37:19,559 INFO    SystemMonitor:145072 [interfaces.py:start():190] Started network monitoring
+2024-02-28 05:37:19,603 DEBUG   HandlerThread:145072 [system_info.py:probe():195] Probing system
+2024-02-28 05:37:19,618 DEBUG   HandlerThread:145072 [system_info.py:_probe_git():180] Probing git
+2024-02-28 05:37:19,653 DEBUG   HandlerThread:145072 [system_info.py:_probe_git():188] Probing git done
+2024-02-28 05:37:19,653 DEBUG   HandlerThread:145072 [system_info.py:probe():240] Probing system done
+2024-02-28 05:37:19,653 DEBUG   HandlerThread:145072 [system_monitor.py:probe():210] {'os': 'Linux-4.18.0-513.5.1.el8_9.x86_64-x86_64-with-glibc2.17', 'python': '3.8.17', 'heartbeatAt': '2024-02-28T10:37:19.603660', 'startedAt': '2024-02-28T10:37:18.866197', 'docker': None, 'cuda': None, 'args': ('3', '2d', '0', '-tr', 'RetinaTrainer', '--no-debug'), 'state': 'running', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py', 'codePath': 'nnunetv2/run/run_training.py', 'git': {'remote': None, 'commit': '0649e96abf91b57bc23f8420e77da6b3d0a71251'}, 'email': 'ypeng4@nd.edu', 'root': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet', 'host': 'qa-p100-001.crc.nd.edu', 'username': 'ypeng4', 'executable': '/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/bin/python', 'cpu_count': 24, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2.86975, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.606, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.859, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.858, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}], 'disk': {'total': 930.0573692321777, 'used': 59.75993347167969}, 'gpu': 'Tesla P100-PCIE-16GB', 'gpu_count': 4, 'gpu_devices': [{'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}], 'memory': {'total': 125.25446319580078}}
+2024-02-28 05:37:19,654 INFO    HandlerThread:145072 [system_monitor.py:probe():211] Finished collecting system info
+2024-02-28 05:37:19,654 INFO    HandlerThread:145072 [system_monitor.py:probe():214] Publishing system info
+2024-02-28 05:37:19,654 DEBUG   HandlerThread:145072 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-02-28 05:37:19,659 DEBUG   HandlerThread:145072 [system_info.py:_save_pip():67] Saving pip packages done
+2024-02-28 05:37:19,659 DEBUG   HandlerThread:145072 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-02-28 05:37:20,374 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_053718-qqzgbbc3/files/conda-environment.yaml
+2024-02-28 05:37:20,375 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_053718-qqzgbbc3/files/requirements.txt
+2024-02-28 05:37:20,376 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_053718-qqzgbbc3/files/wandb-summary.json
+2024-02-28 05:37:21,173 DEBUG   HandlerThread:145072 [system_info.py:_save_conda():86] Saving conda packages done
+2024-02-28 05:37:21,193 INFO    HandlerThread:145072 [system_monitor.py:probe():216] Finished publishing system info
+2024-02-28 05:37:21,205 DEBUG   SenderThread:145072 [sender.py:send():369] send: files
+2024-02-28 05:37:21,205 INFO    SenderThread:145072 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2024-02-28 05:37:21,219 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 05:37:21,229 DEBUG   SenderThread:145072 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 05:37:21,361 DEBUG   SenderThread:145072 [sender.py:send():369] send: telemetry
+2024-02-28 05:37:21,394 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_053718-qqzgbbc3/files/wandb-metadata.json
+2024-02-28 05:37:21,642 INFO    wandb-upload_0:145072 [upload_job.py:push():133] Uploaded file /tmp/137127.1.gpu/tmpdwe7rq4dwandb/efwt3r4c-wandb-metadata.json
+2024-02-28 05:37:22,395 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_053718-qqzgbbc3/files/output.log
+2024-02-28 05:37:24,397 INFO    Thread-16 :145072 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_053718-qqzgbbc3/files/output.log
+2024-02-28 05:37:24,691 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 05:37:29,692 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 05:37:35,580 DEBUG   HandlerThread:145072 [handler.py:handle_request():144] handle_request: status_report

@@ -1,0 +1,78 @@
+<class 'nnunetv2.training.network.model.waveunet.unet.UNet'>
+====================<class 'nnunetv2.training.network.model.waveunet.unet.UNet'>====================
+lr: 0.01
+ds wegihts: [0.50393701 0.2519685  0.12598425 0.06299213 0.03149606 0.01574803
+ 0.00787402]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset003_Cirrus', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [128, 256, 256], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 169.0, 'mean': 40.45668029785156, 'median': 36.0, 'min': 0.0, 'percentile_00_5': 9.0, 'percentile_99_5': 106.0, 'std': 19.84197998046875}}}
+2024-03-05 17:13:06.749829: unpacking dataset...
+2024-03-05 17:13:12.523686: unpacking done...
+2024-03-05 17:13:12.526520: do_dummy_2d_data_aug: False
+2024-03-05 17:13:12.528591: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-03-05 17:13:12.529864: The split file contains 3 splits.
+2024-03-05 17:13:12.530702: Desired fold for training: 0
+2024-03-05 17:13:12.531679: This split has 16 training and 8 validation cases.
+==================batch size: 2===================
+2024-03-05 17:13:12.580027: Unable to plot network architecture:
+2024-03-05 17:13:12.581129: No module named 'hiddenlayer'
+lr: 0.01
+2024-03-05 17:13:12.622917:
+2024-03-05 17:13:12.623814: Epoch 0
+2024-03-05 17:13:12.625129: start training, 250
+2024-03-05 17:13:12.626179: learning rate: 0.01
+using pin_memory on device 0
+2024-03-05 17:13:17.573104: finished training
+2024-03-05 17:13:17.747237: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-03-05 17:13:17.749598: The split file contains 3 splits.
+2024-03-05 17:13:17.750439: Desired fold for training: 0
+2024-03-05 17:13:17.751316: This split has 16 training and 8 validation cases.
+2024-03-05 17:13:26.965018: predicting TRAIN001_Cirrus took 9.21 s
+2024-03-05 17:13:56.569656: starting computing scores...
+all_hd95_mean [17.01248483 67.2021911  78.62831316]
+2024-03-05 17:13:56.573493: DSC: 50.11%
+2024-03-05 17:13:56.574427: DSC_v: 41.78%
+2024-03-05 17:13:56.575326: IRF: 53.18%, SRF: 48.66%, PED: 48.49%
+2024-03-05 17:13:56.576104: current best dsc_v: 0.417815238237381 at epoch: 0, (0, 0.417815238237381, 0.5010921359062195)
+2024-03-05 17:13:56.576773: current best dsc: 0.417815238237381 at epoch: 0, (0, 0.417815238237381, 0.5010921359062195)
+2024-03-05 17:14:03.789529: finished real validation
+using pin_memory on device 0
+2024-03-05 17:14:05.332486: train_loss 1.4078
+2024-03-05 17:14:05.333821: val_loss 1.2725
+2024-03-05 17:14:05.334912: Pseudo dice [0.0015, 0.0053, 0.0091]
+2024-03-05 17:14:05.335943: Epoch time: 52.71 s
+2024-03-05 17:14:05.336706: Yayy! New best EMA pseudo Dice: 0.0053
+lr: 0.009969994993878174
+2024-03-05 17:14:13.590924:
+2024-03-05 17:14:13.591883: Epoch 1
+2024-03-05 17:14:13.592771: start training, 250
+2024-03-05 17:14:13.593582: learning rate: 0.009969994993878174
+2024-03-05 17:14:13.680295: finished training
+2024-03-05 17:14:13.913214: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-03-05 17:14:13.915572: The split file contains 3 splits.
+2024-03-05 17:14:13.916560: Desired fold for training: 0
+2024-03-05 17:14:13.917536: This split has 16 training and 8 validation cases.
+2024-03-05 17:14:22.107597: predicting TRAIN001_Cirrus took 8.19 s
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 301, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 295, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 160, in run_training
+    self.real_validation_retina()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 358, in real_validation_retina
+    _ = [r.get() for r in results]
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 358, in <listcomp>
+    _ = [r.get() for r in results]
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 765, in get
+    self.wait(timeout)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 762, in wait
+    self._event.wait(timeout)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/threading.py", line 558, in wait
+    signaled = self._cond.wait(timeout)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/threading.py", line 302, in wait
+    waiter.acquire()

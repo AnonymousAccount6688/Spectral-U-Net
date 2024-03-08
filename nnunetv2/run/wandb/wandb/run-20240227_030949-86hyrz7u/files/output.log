@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 119, in run_training
+    self.on_train_start()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 902, in on_train_start
+    self.initialize()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 614, in initialize
+    self.network = self.build_network_architecture(self.plans_manager, self.dataset_json,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 86, in build_network_architecture
+    return get_network_from_plans(plans_manager, dataset_json, configuration_manager,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/utilities/get_network_from_plans.py", line 71, in get_network_from_plans
+    model = UNet(in_ch=num_input_channels,

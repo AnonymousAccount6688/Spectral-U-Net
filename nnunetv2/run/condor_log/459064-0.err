@@ -1,0 +1,32 @@
+`fused_weight_gradient_mlp_cuda` module not found. gradient accumulation fusion with weight gradient computation disabled.
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 301, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 295, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 217, in run_training
+    maybe_load_checkpoint(nnunet_trainer, continue_training, only_run_validation, pretrained_weights)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 119, in maybe_load_checkpoint
+    nnunet_trainer.load_checkpoint(expected_checkpoint_file)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1187, in load_checkpoint
+    self.initialize()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 291, in initialize
+    self.network = self.network.to(self.device)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1145, in to
+    return self._apply(convert)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 820, in _apply
+    param_applied = fn(param)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1143, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

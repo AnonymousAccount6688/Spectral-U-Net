@@ -1,0 +1,54 @@
+<class 'nnunetv2.training.network.model.waveunet.unet.UNet'>
+====================<class 'nnunetv2.training.network.model.waveunet.unet.UNet'>====================
+lr: 0.01
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset003_Cirrus', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [128, 256, 256], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 169.0, 'mean': 40.45668029785156, 'median': 36.0, 'min': 0.0, 'percentile_00_5': 9.0, 'percentile_99_5': 106.0, 'std': 19.84197998046875}}}
+2024-02-28 03:45:42.886877: unpacking dataset...
+2024-02-28 03:45:54.741470: unpacking done...
+2024-02-28 03:45:54.744122: do_dummy_2d_data_aug: False
+2024-02-28 03:45:54.746499: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-28 03:45:54.748153: The split file contains 3 splits.
+2024-02-28 03:45:54.749353: Desired fold for training: 0
+2024-02-28 03:45:54.750274: This split has 16 training and 8 validation cases.
+==================batch size: 49==================
+2024-02-28 03:45:54.848803: Unable to plot network architecture:
+2024-02-28 03:45:54.850272: No module named 'hiddenlayer'
+===================debug: False===================
+lr: 0.01
+2024-02-28 03:45:54.954402:
+2024-02-28 03:45:54.955730: Epoch 0
+2024-02-28 03:45:54.956935: start training, 250
+2024-02-28 03:45:54.957883: learning rate: 0.01
+================num of epochs: 250================
+using pin_memory on device 0
+wandb: WARNING Calling wandb.login() after wandb.init() has no effect.
+torch.float16
+torch.float32
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/pycharm-community-2022.3.3/plugins/python-ce/helpers/pydev/pydevd.py", line 1496, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/afs/crc.nd.edu/user/y/ypeng4/pycharm-community-2022.3.3/plugins/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 147, in run_training
+    train_outputs.append(self.train_step(next(self.dataloader_train)))
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 194, in train_step
+    self.grad_scaler.scale(l).backward()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/torch/autograd/function.py", line 274, in apply
+    return user_fn(self, *args)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/network/model/waveunet/torch_wavelets.py", line 69, in backward
+    x_ll = torch.nn.functional.conv2d(dx, w_ll.unsqueeze(1).expand(C, -1, -1, -1), stride=2, groups=C)
+RuntimeError: expected scalar type Half but found Float

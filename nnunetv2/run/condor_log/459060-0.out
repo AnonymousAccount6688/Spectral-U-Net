@@ -1,0 +1,919 @@
+OrderedDict([('self', <Parameter "self">), ('plans', <Parameter "plans: dict">), ('configuration', <Parameter "configuration: str">), ('fold', <Parameter "fold: int">), ('dataset_json', <Parameter "dataset_json: dict">), ('unpack_dataset', <Parameter "unpack_dataset: bool = True">), ('device', <Parameter "device: torch.device = device(type='cuda')">), ('debug', <Parameter "debug=True">), ('job_id', <Parameter "job_id=None">)])
+Using device: cuda:0
+==========================initial_lr: 0.005===========================
+2023-09-05 23:07:00.118852: I am training on qa-rtx6k-018.crc.nd.edu
+2023-09-05 23:07:00.119766: output folder: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458836_my_unet_FusedMBConv_16/fold_0
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+===============use SpatialAtt + ChannelAtt and My attention layer===============
+model: PVTNetwork_5(
+  (backbone): pvt_v2_b2(
+    (patch_embed1): OverlapPatchEmbed(
+      (proj): Conv2d(3, 64, kernel_size=(7, 7), stride=(4, 4), padding=(3, 3))
+      (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed2): OverlapPatchEmbed(
+      (proj): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed3): OverlapPatchEmbed(
+      (proj): Conv2d(128, 320, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed4): OverlapPatchEmbed(
+      (proj): Conv2d(320, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+    (block1): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.007)
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.013)
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+    (block2): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.020)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.027)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.033)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.040)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+    (block3): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.047)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.053)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.060)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.067)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (4): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.073)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (5): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.080)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm3): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+    (block4): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.087)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.093)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.100)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm4): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+  )
+  (Translayer_1): BasicConv2d(
+    (conv): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_2): BasicConv2d(
+    (conv): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_3): BasicConv2d(
+    (conv): Conv2d(320, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_4): BasicConv2d(
+    (conv): Conv2d(512, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (attention_1): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_2): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_3): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_4): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (seg_outs): ModuleList(
+    (0-3): 4 x Conv2d(32, 2, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (deconv2): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv3): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv4): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv5): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+)
+===============<class 'nnunetv2.training.network.model.dim2.pvt.pvt_5.PVTNetwork_5'>================
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+loading from : /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458836_my_unet_FusedMBConv_16/fold_0/checkpoint_latest.pth
+
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [False, False, False], 'UNet_class_name': 'PlainConvUNet', 'nnUNet_UNet': False, 'my_net_class': 'pvt_5', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True} 
+
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset124_ISIC2018', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [999.0, 1.0, 1.0], 'original_median_shape_after_transp': [1, 256, 256], 'image_reader_writer': 'NaturalImage2DIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 255.0, 'mean': 160.57754516601562, 'median': 164.0, 'min': 0.0, 'percentile_00_5': 29.0, 'percentile_99_5': 253.0, 'std': 42.08180618286133}, '1': {'max': 255.0, 'mean': 111.1130142211914, 'median': 113.0, 'min': 0.0, 'percentile_00_5': 8.0, 'percentile_99_5': 222.0, 'std': 43.864933013916016}, '2': {'max': 255.0, 'mean': 91.45153045654297, 'median': 91.0, 'min': 0.0, 'percentile_00_5': 4.0, 'percentile_99_5': 209.0, 'std': 43.73163604736328}}} 
+
+2023-09-05 23:07:16.148532: unpacking dataset...
+2023-09-05 23:07:36.746552: unpacking done...
+2023-09-05 23:07:36.748099: do_dummy_2d_data_aug: False
+2023-09-05 23:07:36.768235: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:07:36.769611: The split file contains 1 splits.
+2023-09-05 23:07:36.770182: Desired fold for training: 0
+2023-09-05 23:07:36.770593: This split has 1886 training and 808 validation cases.
+==================batch size: 49==================
+2023-09-05 23:07:36.803286: Unable to plot network architecture:
+2023-09-05 23:07:36.803722: No module named 'hiddenlayer'
+PVTNetwork_5
+===================debug: False===================
+2023-09-05 23:07:39.107338: 
+2023-09-05 23:07:39.108183: Epoch 40
+2023-09-05 23:07:39.109151: Current learning rate: backbone 0.00087916, others 0.00087916
+2023-09-05 23:07:39.109866: start training, 250
+==========num_iterations_per_epoch: 250===========
+using pin_memory on device 0
+2023-09-05 23:08:59.989621: finished training epoch 40
+2023-09-05 23:09:00.016432: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:09:00.017704: The split file contains 1 splits.
+2023-09-05 23:09:00.018237: Desired fold for training: 0
+2023-09-05 23:09:00.018677: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:13:54.525735: dsc: 91.02%
+2023-09-05 23:13:54.526927: miou: 83.52%
+2023-09-05 23:13:54.527810: acc: 95.45%, sen: 91.71%, spe: 96.70%
+2023-09-05 23:13:54.529009: current best miou: 0.8352022714442631 at epoch: 40, (40, 0.8352022714442631, 0.9102018719571195)
+2023-09-05 23:13:54.529601: current best dsc: 0.9102018719571195 at epoch: 40, (40, 0.8352022714442631, 0.9102018719571195)
+2023-09-05 23:13:55.986663: finished real validation
+using pin_memory on device 0
+2023-09-05 23:14:00.891165: train_loss -1.404
+2023-09-05 23:14:00.892363: val_loss -1.12
+2023-09-05 23:14:00.893754: Pseudo dice [0.9102]
+2023-09-05 23:14:00.894483: Epoch time: 381.79 s
+2023-09-05 23:14:00.895137: Yayy! New best EMA pseudo Dice: 0.9084
+2023-09-05 23:14:03.680575: 
+2023-09-05 23:14:03.681706: Epoch 41
+2023-09-05 23:14:03.682383: Current learning rate: backbone 0.00087611, others 0.00087611
+2023-09-05 23:14:03.684150: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:15:02.304636: finished training epoch 41
+2023-09-05 23:15:02.339005: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:15:02.340576: The split file contains 1 splits.
+2023-09-05 23:15:02.341245: Desired fold for training: 0
+2023-09-05 23:15:02.341782: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:19:49.318068: dsc: 91.04%
+2023-09-05 23:19:49.319043: miou: 83.56%
+2023-09-05 23:19:49.319617: acc: 95.54%, sen: 90.18%, spe: 97.34%
+2023-09-05 23:19:49.320458: current best miou: 0.8355578718120398 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:19:49.320973: current best dsc: 0.910412997207424 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:19:50.814604: finished real validation
+2023-09-05 23:19:55.014572: train_loss -1.4043
+2023-09-05 23:19:55.015768: val_loss -1.1154
+2023-09-05 23:19:55.016675: Pseudo dice [0.9097]
+2023-09-05 23:19:55.017302: Epoch time: 351.34 s
+2023-09-05 23:19:55.017866: Yayy! New best EMA pseudo Dice: 0.9085
+2023-09-05 23:19:57.525871: 
+2023-09-05 23:19:57.526781: Epoch 42
+2023-09-05 23:19:57.527435: Current learning rate: backbone 0.00087307, others 0.00087307
+2023-09-05 23:19:57.528409: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:20:56.236452: finished training epoch 42
+2023-09-05 23:20:56.263366: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:20:56.265510: The split file contains 1 splits.
+2023-09-05 23:20:56.266420: Desired fold for training: 0
+2023-09-05 23:20:56.267355: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:25:40.501108: dsc: 91.01%
+2023-09-05 23:25:40.502215: miou: 83.50%
+2023-09-05 23:25:40.502779: acc: 95.44%, sen: 91.66%, spe: 96.72%
+2023-09-05 23:25:40.503744: current best miou: 0.8355578718120398 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:25:40.504289: current best dsc: 0.910412997207424 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:25:40.504883: finished real validation
+2023-09-05 23:25:44.701395: train_loss -1.4041
+2023-09-05 23:25:44.702465: val_loss -1.1366
+2023-09-05 23:25:44.703409: Pseudo dice [0.9115]
+2023-09-05 23:25:44.704034: Epoch time: 347.18 s
+2023-09-05 23:25:44.704655: Yayy! New best EMA pseudo Dice: 0.9088
+2023-09-05 23:25:47.187196: 
+2023-09-05 23:25:47.188139: Epoch 43
+2023-09-05 23:25:47.188892: Current learning rate: backbone 0.00087002, others 0.00087002
+2023-09-05 23:25:47.190073: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:26:45.917692: finished training epoch 43
+2023-09-05 23:26:45.957571: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:26:45.959192: The split file contains 1 splits.
+2023-09-05 23:26:45.959846: Desired fold for training: 0
+2023-09-05 23:26:45.960396: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:31:30.353686: dsc: 90.91%
+2023-09-05 23:31:30.354660: miou: 83.34%
+2023-09-05 23:31:30.355221: acc: 95.47%, sen: 90.14%, spe: 97.26%
+2023-09-05 23:31:30.356107: current best miou: 0.8355578718120398 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:31:30.356666: current best dsc: 0.910412997207424 at epoch: 41, (41, 0.8355578718120398, 0.910412997207424)
+2023-09-05 23:31:30.357152: finished real validation
+2023-09-05 23:31:34.559760: train_loss -1.4075
+2023-09-05 23:31:34.560754: val_loss -1.1082
+2023-09-05 23:31:34.561706: Pseudo dice [0.9053]
+2023-09-05 23:31:34.562462: Epoch time: 347.37 s
+2023-09-05 23:31:35.610440: 
+2023-09-05 23:31:35.611242: Epoch 44
+2023-09-05 23:31:35.611992: Current learning rate: backbone 0.00086698, others 0.00086698
+2023-09-05 23:31:35.613161: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:32:34.317663: finished training epoch 44
+2023-09-05 23:32:34.344770: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:32:34.346194: The split file contains 1 splits.
+2023-09-05 23:32:34.346976: Desired fold for training: 0
+2023-09-05 23:32:34.347645: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:37:19.513144: dsc: 91.12%
+2023-09-05 23:37:19.514169: miou: 83.69%
+2023-09-05 23:37:19.514736: acc: 95.50%, sen: 91.83%, spe: 96.73%
+2023-09-05 23:37:19.515625: current best miou: 0.8368692266637472 at epoch: 44, (44, 0.8368692266637472, 0.9111908616202676)
+2023-09-05 23:37:19.516205: current best dsc: 0.9111908616202676 at epoch: 44, (44, 0.8368692266637472, 0.9111908616202676)
+2023-09-05 23:37:20.969990: finished real validation
+2023-09-05 23:37:25.182590: train_loss -1.4072
+2023-09-05 23:37:25.183811: val_loss -1.109
+2023-09-05 23:37:25.184718: Pseudo dice [0.9099]
+2023-09-05 23:37:25.185385: Epoch time: 349.57 s
+2023-09-05 23:37:26.235046: 
+2023-09-05 23:37:26.236132: Epoch 45
+2023-09-05 23:37:26.236817: Current learning rate: backbone 0.00086393, others 0.00086393
+2023-09-05 23:37:26.237957: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:38:24.929306: finished training epoch 45
+2023-09-05 23:38:24.959384: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:38:24.960829: The split file contains 1 splits.
+2023-09-05 23:38:24.961907: Desired fold for training: 0
+2023-09-05 23:38:24.962657: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:43:14.131070: dsc: 91.00%
+2023-09-05 23:43:14.132037: miou: 83.48%
+2023-09-05 23:43:14.132591: acc: 95.49%, sen: 90.66%, spe: 97.11%
+2023-09-05 23:43:14.133486: current best miou: 0.8368692266637472 at epoch: 44, (44, 0.8368692266637472, 0.9111908616202676)
+2023-09-05 23:43:14.134103: current best dsc: 0.9111908616202676 at epoch: 44, (44, 0.8368692266637472, 0.9111908616202676)
+2023-09-05 23:43:14.134634: finished real validation
+2023-09-05 23:43:18.343381: train_loss -1.4078
+2023-09-05 23:43:18.344599: val_loss -1.087
+2023-09-05 23:43:18.345532: Pseudo dice [0.9034]
+2023-09-05 23:43:18.346240: Epoch time: 352.11 s
+2023-09-05 23:43:19.394067: 
+2023-09-05 23:43:19.395198: Epoch 46
+2023-09-05 23:43:19.395970: Current learning rate: backbone 0.00086088, others 0.00086088
+2023-09-05 23:43:19.397079: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:44:18.097679: finished training epoch 46
+2023-09-05 23:44:18.126384: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:44:18.127724: The split file contains 1 splits.
+2023-09-05 23:44:18.128500: Desired fold for training: 0
+2023-09-05 23:44:18.129460: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:49:04.134715: dsc: 91.19%
+2023-09-05 23:49:04.135950: miou: 83.81%
+2023-09-05 23:49:04.136612: acc: 95.59%, sen: 90.76%, spe: 97.21%
+2023-09-05 23:49:04.137468: current best miou: 0.838069145806521 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-05 23:49:04.138145: current best dsc: 0.9119016525776968 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-05 23:49:05.634489: finished real validation
+2023-09-05 23:49:09.844594: train_loss -1.4085
+2023-09-05 23:49:09.846168: val_loss -1.1288
+2023-09-05 23:49:09.847586: Pseudo dice [0.912]
+2023-09-05 23:49:09.848654: Epoch time: 350.45 s
+2023-09-05 23:49:10.909486: 
+2023-09-05 23:49:10.910515: Epoch 47
+2023-09-05 23:49:10.911329: Current learning rate: backbone 0.00085783, others 0.00085783
+2023-09-05 23:49:10.913224: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:50:09.628921: finished training epoch 47
+2023-09-05 23:50:09.657319: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:50:09.658935: The split file contains 1 splits.
+2023-09-05 23:50:09.659748: Desired fold for training: 0
+2023-09-05 23:50:09.660873: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-05 23:54:55.577457: dsc: 90.97%
+2023-09-05 23:54:55.578623: miou: 83.43%
+2023-09-05 23:54:55.579258: acc: 95.47%, sen: 90.60%, spe: 97.11%
+2023-09-05 23:54:55.580174: current best miou: 0.838069145806521 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-05 23:54:55.580832: current best dsc: 0.9119016525776968 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-05 23:54:55.581388: finished real validation
+2023-09-05 23:54:59.780714: train_loss -1.4093
+2023-09-05 23:54:59.781896: val_loss -1.1445
+2023-09-05 23:54:59.782818: Pseudo dice [0.9151]
+2023-09-05 23:54:59.783536: Epoch time: 348.87 s
+2023-09-05 23:54:59.784464: Yayy! New best EMA pseudo Dice: 0.9091
+2023-09-05 23:55:02.304024: 
+2023-09-05 23:55:02.305039: Epoch 48
+2023-09-05 23:55:02.305809: Current learning rate: backbone 0.00085477, others 0.00085477
+2023-09-05 23:55:02.307474: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-05 23:56:01.542525: finished training epoch 48
+2023-09-05 23:56:01.582303: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-05 23:56:01.583717: The split file contains 1 splits.
+2023-09-05 23:56:01.584483: Desired fold for training: 0
+2023-09-05 23:56:01.585041: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:00:52.043304: dsc: 90.86%
+2023-09-06 00:00:52.044632: miou: 83.25%
+2023-09-06 00:00:52.045485: acc: 95.42%, sen: 90.58%, spe: 97.04%
+2023-09-06 00:00:52.046393: current best miou: 0.838069145806521 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:00:52.047044: current best dsc: 0.9119016525776968 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:00:52.048150: finished real validation
+2023-09-06 00:00:56.245208: train_loss -1.4106
+2023-09-06 00:00:56.246502: val_loss -1.1097
+2023-09-06 00:00:56.247524: Pseudo dice [0.9087]
+2023-09-06 00:00:56.248360: Epoch time: 353.94 s
+2023-09-06 00:00:57.297784: 
+2023-09-06 00:00:57.298934: Epoch 49
+2023-09-06 00:00:57.299809: Current learning rate: backbone 0.00085172, others 0.00085172
+2023-09-06 00:00:57.300824: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:01:56.006505: finished training epoch 49
+2023-09-06 00:01:56.033563: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:01:56.035052: The split file contains 1 splits.
+2023-09-06 00:01:56.035750: Desired fold for training: 0
+2023-09-06 00:01:56.036328: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:06:41.638912: dsc: 90.92%
+2023-09-06 00:06:41.640124: miou: 83.35%
+2023-09-06 00:06:41.640800: acc: 95.46%, sen: 90.44%, spe: 97.14%
+2023-09-06 00:06:41.641770: current best miou: 0.838069145806521 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:06:41.642598: current best dsc: 0.9119016525776968 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:06:41.643442: finished real validation
+2023-09-06 00:06:45.842671: train_loss -1.4103
+2023-09-06 00:06:45.843862: val_loss -1.1069
+2023-09-06 00:06:45.844799: Pseudo dice [0.9101]
+2023-09-06 00:06:45.845511: Epoch time: 348.55 s
+2023-09-06 00:06:47.312361: Yayy! New best EMA pseudo Dice: 0.9092
+2023-09-06 00:06:49.858374: 
+2023-09-06 00:06:49.859502: Epoch 50
+2023-09-06 00:06:49.860273: Current learning rate: backbone 0.00084867, others 0.00084867
+2023-09-06 00:06:49.861302: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:07:48.572816: finished training epoch 50
+2023-09-06 00:07:48.620507: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:07:48.622308: The split file contains 1 splits.
+2023-09-06 00:07:48.623005: Desired fold for training: 0
+2023-09-06 00:07:48.623674: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:12:37.740080: dsc: 91.17%
+2023-09-06 00:12:37.741461: miou: 83.77%
+2023-09-06 00:12:37.742141: acc: 95.57%, sen: 90.84%, spe: 97.16%
+2023-09-06 00:12:37.743095: current best miou: 0.838069145806521 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:12:37.743756: current best dsc: 0.9119016525776968 at epoch: 46, (46, 0.838069145806521, 0.9119016525776968)
+2023-09-06 00:12:37.744300: finished real validation
+2023-09-06 00:12:41.926164: train_loss -1.4108
+2023-09-06 00:12:41.927430: val_loss -1.1305
+2023-09-06 00:12:41.928402: Pseudo dice [0.9133]
+2023-09-06 00:12:41.929224: Epoch time: 352.07 s
+2023-09-06 00:12:41.929877: Yayy! New best EMA pseudo Dice: 0.9096
+2023-09-06 00:12:44.484488: 
+2023-09-06 00:12:44.485589: Epoch 51
+2023-09-06 00:12:44.486595: Current learning rate: backbone 0.00084561, others 0.00084561
+2023-09-06 00:12:44.488068: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:13:43.138543: finished training epoch 51
+2023-09-06 00:13:43.167339: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:13:43.168833: The split file contains 1 splits.
+2023-09-06 00:13:43.169474: Desired fold for training: 0
+2023-09-06 00:13:43.170076: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:18:35.554357: dsc: 91.23%
+2023-09-06 00:18:35.555571: miou: 83.87%
+2023-09-06 00:18:35.556261: acc: 95.57%, sen: 91.46%, spe: 96.96%
+2023-09-06 00:18:35.558103: current best miou: 0.8386651441413125 at epoch: 51, (51, 0.8386651441413125, 0.9122543567148365)
+2023-09-06 00:18:35.559090: current best dsc: 0.9122543567148365 at epoch: 51, (51, 0.8386651441413125, 0.9122543567148365)
+2023-09-06 00:18:37.044958: finished real validation
+2023-09-06 00:18:41.232424: train_loss -1.4117
+2023-09-06 00:18:41.233862: val_loss -1.1034
+2023-09-06 00:18:41.234832: Pseudo dice [0.9124]
+2023-09-06 00:18:41.235607: Epoch time: 356.75 s
+2023-09-06 00:18:41.236226: Yayy! New best EMA pseudo Dice: 0.9099
+2023-09-06 00:18:43.773086: 
+2023-09-06 00:18:43.774210: Epoch 52
+2023-09-06 00:18:43.774985: Current learning rate: backbone 0.00084255, others 0.00084255
+2023-09-06 00:18:43.776030: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:19:42.556834: finished training epoch 52
+2023-09-06 00:19:42.583847: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:19:42.586205: The split file contains 1 splits.
+2023-09-06 00:19:42.587286: Desired fold for training: 0
+2023-09-06 00:19:42.588249: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:24:28.116217: dsc: 91.23%
+2023-09-06 00:24:28.117503: miou: 83.88%
+2023-09-06 00:24:28.118255: acc: 95.58%, sen: 91.53%, spe: 96.94%
+2023-09-06 00:24:28.119356: current best miou: 0.8387978709875955 at epoch: 52, (52, 0.8387978709875955, 0.9123328716245332)
+2023-09-06 00:24:28.120058: current best dsc: 0.9123328716245332 at epoch: 52, (52, 0.8387978709875955, 0.9123328716245332)
+2023-09-06 00:24:29.609493: finished real validation
+2023-09-06 00:24:33.801894: train_loss -1.4115
+2023-09-06 00:24:33.803066: val_loss -1.122
+2023-09-06 00:24:33.804013: Pseudo dice [0.9136]
+2023-09-06 00:24:33.804788: Epoch time: 350.03 s
+2023-09-06 00:24:33.805449: Yayy! New best EMA pseudo Dice: 0.9103
+2023-09-06 00:24:36.356006: 
+2023-09-06 00:24:36.357138: Epoch 53
+2023-09-06 00:24:36.357911: Current learning rate: backbone 0.0008395, others 0.0008395
+2023-09-06 00:24:36.358955: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:25:35.020015: finished training epoch 53
+2023-09-06 00:25:35.066152: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:25:35.067603: The split file contains 1 splits.
+2023-09-06 00:25:35.068305: Desired fold for training: 0
+2023-09-06 00:25:35.068949: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:30:22.033651: dsc: 91.22%
+2023-09-06 00:30:22.034717: miou: 83.86%
+2023-09-06 00:30:22.035377: acc: 95.59%, sen: 91.06%, spe: 97.12%
+2023-09-06 00:30:22.036327: current best miou: 0.8387978709875955 at epoch: 52, (52, 0.8387978709875955, 0.9123328716245332)
+2023-09-06 00:30:22.037023: current best dsc: 0.9123328716245332 at epoch: 52, (52, 0.8387978709875955, 0.9123328716245332)
+2023-09-06 00:30:22.037621: finished real validation
+2023-09-06 00:30:26.223700: train_loss -1.413
+2023-09-06 00:30:26.224899: val_loss -1.1264
+2023-09-06 00:30:26.225889: Pseudo dice [0.9109]
+2023-09-06 00:30:26.226676: Epoch time: 349.87 s
+2023-09-06 00:30:26.227391: Yayy! New best EMA pseudo Dice: 0.9103
+2023-09-06 00:30:28.771136: 
+2023-09-06 00:30:28.772361: Epoch 54
+2023-09-06 00:30:28.773186: Current learning rate: backbone 0.00083644, others 0.00083644
+2023-09-06 00:30:28.774309: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:31:27.495930: finished training epoch 54
+2023-09-06 00:31:27.523507: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:31:27.525265: The split file contains 1 splits.
+2023-09-06 00:31:27.526012: Desired fold for training: 0
+2023-09-06 00:31:27.531921: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:36:13.165227: dsc: 91.25%
+2023-09-06 00:36:13.166328: miou: 83.91%
+2023-09-06 00:36:13.167053: acc: 95.61%, sen: 91.00%, spe: 97.16%
+2023-09-06 00:36:13.167996: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:36:13.168848: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:36:14.659217: finished real validation
+2023-09-06 00:36:18.863883: train_loss -1.4134
+2023-09-06 00:36:18.865042: val_loss -1.1366
+2023-09-06 00:36:18.865982: Pseudo dice [0.9136]
+2023-09-06 00:36:18.866758: Epoch time: 350.09 s
+2023-09-06 00:36:18.867392: Yayy! New best EMA pseudo Dice: 0.9107
+2023-09-06 00:36:21.430909: 
+2023-09-06 00:36:21.432036: Epoch 55
+2023-09-06 00:36:21.432851: Current learning rate: backbone 0.00083337, others 0.00083337
+2023-09-06 00:36:21.434110: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:37:20.110138: finished training epoch 55
+2023-09-06 00:37:20.139647: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:37:20.141030: The split file contains 1 splits.
+2023-09-06 00:37:20.141976: Desired fold for training: 0
+2023-09-06 00:37:20.142552: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:42:12.235715: dsc: 91.17%
+2023-09-06 00:42:12.236873: miou: 83.77%
+2023-09-06 00:42:12.237637: acc: 95.59%, sen: 90.53%, spe: 97.29%
+2023-09-06 00:42:12.238696: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:42:12.239390: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:42:12.240030: finished real validation
+2023-09-06 00:42:16.449993: train_loss -1.4148
+2023-09-06 00:42:16.451284: val_loss -1.1238
+2023-09-06 00:42:16.452278: Pseudo dice [0.9146]
+2023-09-06 00:42:16.453112: Epoch time: 355.02 s
+2023-09-06 00:42:16.453809: Yayy! New best EMA pseudo Dice: 0.911
+2023-09-06 00:42:19.044168: 
+2023-09-06 00:42:19.045594: Epoch 56
+2023-09-06 00:42:19.046658: Current learning rate: backbone 0.00083031, others 0.00083031
+2023-09-06 00:42:19.047821: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:43:17.732460: finished training epoch 56
+2023-09-06 00:43:17.759983: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:43:17.761555: The split file contains 1 splits.
+2023-09-06 00:43:17.762339: Desired fold for training: 0
+2023-09-06 00:43:17.763077: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:48:05.602072: dsc: 90.92%
+2023-09-06 00:48:05.603287: miou: 83.36%
+2023-09-06 00:48:05.604051: acc: 95.43%, sen: 90.95%, spe: 96.94%
+2023-09-06 00:48:05.605155: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:48:05.605826: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:48:05.606498: finished real validation
+2023-09-06 00:48:09.809015: train_loss -1.4141
+2023-09-06 00:48:09.810307: val_loss -1.1035
+2023-09-06 00:48:09.811299: Pseudo dice [0.9095]
+2023-09-06 00:48:09.812092: Epoch time: 350.77 s
+2023-09-06 00:48:10.861170: 
+2023-09-06 00:48:10.862425: Epoch 57
+2023-09-06 00:48:10.863287: Current learning rate: backbone 0.00082725, others 0.00082725
+2023-09-06 00:48:10.864411: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:49:09.429269: finished training epoch 57
+2023-09-06 00:49:09.465478: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:49:09.467101: The split file contains 1 splits.
+2023-09-06 00:49:09.467911: Desired fold for training: 0
+2023-09-06 00:49:09.468661: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:53:57.897390: dsc: 90.98%
+2023-09-06 00:53:57.898629: miou: 83.46%
+2023-09-06 00:53:57.899380: acc: 95.47%, sen: 90.88%, spe: 97.01%
+2023-09-06 00:53:57.900463: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:53:57.901181: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:53:57.901837: finished real validation
+2023-09-06 00:54:02.114550: train_loss -1.416
+2023-09-06 00:54:02.115703: val_loss -1.082
+2023-09-06 00:54:02.116652: Pseudo dice [0.9103]
+2023-09-06 00:54:02.117420: Epoch time: 351.25 s
+2023-09-06 00:54:03.173553: 
+2023-09-06 00:54:03.174624: Epoch 58
+2023-09-06 00:54:03.175664: Current learning rate: backbone 0.00082418, others 0.00082418
+2023-09-06 00:54:03.176830: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 00:55:01.822413: finished training epoch 58
+2023-09-06 00:55:01.861991: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 00:55:01.863851: The split file contains 1 splits.
+2023-09-06 00:55:01.864629: Desired fold for training: 0
+2023-09-06 00:55:01.865335: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 00:59:59.482812: dsc: 91.10%
+2023-09-06 00:59:59.484294: miou: 83.65%
+2023-09-06 00:59:59.485030: acc: 95.55%, sen: 90.54%, spe: 97.23%
+2023-09-06 00:59:59.486149: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:59:59.486900: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 00:59:59.487565: finished real validation
+2023-09-06 01:00:03.701543: train_loss -1.4161
+2023-09-06 01:00:03.703004: val_loss -1.102
+2023-09-06 01:00:03.704093: Pseudo dice [0.9097]
+2023-09-06 01:00:03.704946: Epoch time: 360.53 s
+2023-09-06 01:00:04.774991: 
+2023-09-06 01:00:04.776434: Epoch 59
+2023-09-06 01:00:04.777614: Current learning rate: backbone 0.00082112, others 0.00082112
+2023-09-06 01:00:04.778965: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 01:01:03.417544: finished training epoch 59
+2023-09-06 01:01:03.445294: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 01:01:03.447479: The split file contains 1 splits.
+2023-09-06 01:01:03.448745: Desired fold for training: 0
+2023-09-06 01:01:03.449727: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-06 01:05:54.463311: dsc: 91.05%
+2023-09-06 01:05:54.464831: miou: 83.56%
+2023-09-06 01:05:54.465618: acc: 95.54%, sen: 90.11%, spe: 97.37%
+2023-09-06 01:05:54.466704: current best miou: 0.8390766024155545 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 01:05:54.467686: current best dsc: 0.9124977190329762 at epoch: 54, (54, 0.8390766024155545, 0.9124977190329762)
+2023-09-06 01:05:54.468561: finished real validation
+2023-09-06 01:05:58.678124: train_loss -1.415
+2023-09-06 01:05:58.679344: val_loss -1.1189
+2023-09-06 01:05:58.680313: Pseudo dice [0.9134]
+2023-09-06 01:05:58.681095: Epoch time: 353.9 s
+2023-09-06 01:06:01.250044: 
+2023-09-06 01:06:01.251458: Epoch 60
+2023-09-06 01:06:01.252391: Current learning rate: backbone 0.00081805, others 0.00081805
+2023-09-06 01:06:01.253546: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-06 01:06:59.980207: finished training epoch 60
+2023-09-06 01:07:00.012065: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-06 01:07:00.013842: The split file contains 1 splits.
+2023-09-06 01:07:00.014628: Desired fold for training: 0
+2023-09-06 01:07:00.015471: This split has 1886 training and 808 validation cases.

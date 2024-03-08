@@ -1,0 +1,63 @@
+<class 'nnunetv2.training.network.model.waveunet.brain_wave_unet.WaveUNet'>
+============<class 'nnunetv2.training.network.model.waveunet.brain_wave_unet.WaveUNet'>=============
+lr: 0.01
+ds wegihts: [0.50793651 0.25396825 0.12698413 0.06349206 0.03174603 0.01587302]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 105, 'patch_size': [192, 160], 'median_image_size_in_voxels': [169.0, 138.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [True, True, True, True], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2], 'num_pool_per_axis': [5, 5], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset201_BrainTumour', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [138, 169, 138], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 5721.0, 'mean': 728.8666381835938, 'median': 779.0, 'min': 0.0, 'percentile_00_5': 104.0, 'percentile_99_5': 1733.0, 'std': 354.5618896484375}, '1': {'max': 8761.0, 'mean': 621.560791015625, 'median': 644.0, 'min': 0.0, 'percentile_00_5': 56.0, 'percentile_99_5': 2421.0, 'std': 335.946044921875}, '2': {'max': 9012.0, 'mean': 662.5552368164062, 'median': 639.0, 'min': 0.0, 'percentile_00_5': 44.0, 'percentile_99_5': 2963.0, 'std': 420.2735595703125}, '3': {'max': 3346.0, 'mean': 664.2885131835938, 'median': 647.0, 'min': 0.0, 'percentile_00_5': 103.0, 'percentile_99_5': 1997.0, 'std': 318.48980712890625}}}
+2024-02-28 18:17:09.589458: unpacking dataset...
+2024-02-28 18:17:21.558199: unpacking done...
+2024-02-28 18:17:21.563854: do_dummy_2d_data_aug: False
+2024-02-28 18:17:21.575227: Using splits from existing split file: /scratch365/ypeng4/data/preprocessed_data/Dataset201_BrainTumour/splits_final.json
+2024-02-28 18:17:21.578028: The split file contains 5 splits.
+2024-02-28 18:17:21.579048: Desired fold for training: 0
+2024-02-28 18:17:21.579929: This split has 387 training and 97 validation cases.
+==================batch size: 2===================
+2024-02-28 18:17:21.701174: Unable to plot network architecture:
+2024-02-28 18:17:21.702744: No module named 'hiddenlayer'
+lr: 0.01
+2024-02-28 18:17:21.777299:
+2024-02-28 18:17:21.778582: Epoch 0
+2024-02-28 18:17:21.779654: start training, 250
+2024-02-28 18:17:21.780673: learning rate: 0.01
+using pin_memory on device 0
+2024-02-28 18:17:25.107246: finished training
+2024-02-28 18:17:25.397342: Using splits from existing split file: /scratch365/ypeng4/data/preprocessed_data/Dataset201_BrainTumour/splits_final.json
+2024-02-28 18:17:25.401198: The split file contains 5 splits.
+2024-02-28 18:17:25.402541: Desired fold for training: 0
+2024-02-28 18:17:25.403750: This split has 387 training and 97 validation cases.
+2024-02-28 18:17:35.053072: predicting BRATS_010 took 9.63 s
+joblib.externals.loky.process_executor._RemoteTraceback:
+"""
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/_parallel_backends.py", line 273, in _wrap_func_call
+    return func()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 588, in __call__
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 588, in <listcomp>
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 397, in get_score
+    case_vol_dice, case_hd95 = dice_score_vol(seg_pred, seg_ref, num_classes=4)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 379, in dice_score_vol
+    case_hd95.append(medpy.metric.hd95(pred_npy[..., i],
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/medpy/metric/binary.py", line 396, in hd95
+    hd1 = __surface_distances(result, reference, voxelspacing, connectivity)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/medpy/metric/binary.py", line 1215, in __surface_distances
+    raise RuntimeError('The second supplied array does not contain any binary object.')
+RuntimeError: The second supplied array does not contain any binary object.
+"""
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1587, in _get_outputs
+    yield from self._retrieve()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1691, in _retrieve
+    self._raise_error_fast()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1726, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 735, in get_result
+    return self._return_or_raise()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 753, in _return_or_raise
+    raise self._result
+RuntimeError: The second supplied array does not contain any binary object.

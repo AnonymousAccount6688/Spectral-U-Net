@@ -1,0 +1,40 @@
+2024-02-27 03:49:29,500 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Current SDK version is 0.15.4
+2024-02-27 03:49:29,500 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Configure stats pid to 2913933
+2024-02-27 03:49:29,501 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/.config/wandb/settings
+2024-02-27 03:49:29,501 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/wandb/settings
+2024-02-27 03:49:29,501 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-02-27 03:49:29,501 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-02-27 03:49:29,501 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'nnunetv2/run/run_training.py', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py'}
+2024-02-27 03:49:29,502 INFO    MainThread:2913933 [wandb_init.py:_log_setup():507] Logging user logs to wandb/wandb/run-20240227_034929-60wccbkd/logs/debug.log
+2024-02-27 03:49:29,502 INFO    MainThread:2913933 [wandb_init.py:_log_setup():508] Logging internal logs to wandb/wandb/run-20240227_034929-60wccbkd/logs/debug-internal.log
+2024-02-27 03:49:29,502 INFO    MainThread:2913933 [wandb_init.py:init():547] calling init triggers
+2024-02-27 03:49:29,502 INFO    MainThread:2913933 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2024-02-27 03:49:29,502 INFO    MainThread:2913933 [wandb_init.py:init():596] starting backend
+2024-02-27 03:49:29,503 INFO    MainThread:2913933 [wandb_init.py:init():600] setting up manager
+2024-02-27 03:49:29,507 INFO    MainThread:2913933 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-02-27 03:49:29,512 INFO    MainThread:2913933 [wandb_init.py:init():606] backend started and connected
+2024-02-27 03:49:29,518 INFO    MainThread:2913933 [wandb_init.py:init():703] updated telemetry
+2024-02-27 03:49:29,556 INFO    MainThread:2913933 [wandb_init.py:init():736] communicating run to backend with 60.0 second timeout
+2024-02-27 03:49:30,004 INFO    MainThread:2913933 [wandb_run.py:_on_init():2176] communicating current version
+2024-02-27 03:49:30,123 INFO    MainThread:2913933 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.16.3 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-02-27 03:49:30,123 INFO    MainThread:2913933 [wandb_init.py:init():787] starting run threads in backend
+2024-02-27 03:49:31,848 INFO    MainThread:2913933 [wandb_run.py:_console_start():2155] atexit reg
+2024-02-27 03:49:31,849 INFO    MainThread:2913933 [wandb_run.py:_redirect():2010] redirect: SettingsConsole.WRAP_RAW
+2024-02-27 03:49:31,850 INFO    MainThread:2913933 [wandb_run.py:_redirect():2075] Wrapping output streams.
+2024-02-27 03:49:31,850 INFO    MainThread:2913933 [wandb_run.py:_redirect():2100] Redirects installed.
+2024-02-27 03:49:31,851 INFO    MainThread:2913933 [wandb_init.py:init():828] run started, returning control to user process
+2024-02-27 03:49:45,481 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Current SDK version is 0.15.4
+2024-02-27 03:49:45,482 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Configure stats pid to 2913933
+2024-02-27 03:49:45,482 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/.config/wandb/settings
+2024-02-27 03:49:45,482 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/wandb/settings
+2024-02-27 03:49:45,483 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-02-27 03:49:45,483 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-02-27 03:49:45,483 INFO    MainThread:2913933 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'nnunetv2/run/run_training.py', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py'}
+2024-02-27 03:49:45,483 INFO    MainThread:2913933 [wandb_init.py:_log_setup():507] Logging user logs to /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset003_Cirrus/RetinaTrainer__nnUNetPlans__2d/unknown_my_unet_FusedMBConv_16/fold_0/wandb/run-20240227_034945-yg5yo4cf/logs/debug.log
+2024-02-27 03:49:45,484 INFO    MainThread:2913933 [wandb_init.py:_log_setup():508] Logging internal logs to /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset003_Cirrus/RetinaTrainer__nnUNetPlans__2d/unknown_my_unet_FusedMBConv_16/fold_0/wandb/run-20240227_034945-yg5yo4cf/logs/debug-internal.log
+2024-02-27 03:49:45,484 INFO    MainThread:2913933 [wandb_init.py:init():547] calling init triggers
+2024-02-27 03:49:45,484 INFO    MainThread:2913933 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2024-02-27 03:49:45,484 INFO    MainThread:2913933 [wandb_init.py:init():591] wandb.init() called when a run is still active

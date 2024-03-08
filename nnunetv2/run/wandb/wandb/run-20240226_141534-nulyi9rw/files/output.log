@@ -1,0 +1,163 @@
+==============<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>==============
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset003_Cirrus', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [128, 256, 256], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 169.0, 'mean': 40.45668029785156, 'median': 36.0, 'min': 0.0, 'percentile_00_5': 9.0, 'percentile_99_5': 106.0, 'std': 19.84197998046875}}}
+2024-02-26 14:15:37.992169: unpacking dataset...
+2024-02-26 14:15:43.548375: unpacking done...
+2024-02-26 14:15:43.550527: do_dummy_2d_data_aug: False
+2024-02-26 14:15:43.552188: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:15:43.553371: The split file contains 3 splits.
+2024-02-26 14:15:43.554283: Desired fold for training: 0
+2024-02-26 14:15:43.555269: This split has 16 training and 8 validation cases.
+==================batch size: 2===================
+2024-02-26 14:15:43.621397: Unable to plot network architecture:
+2024-02-26 14:15:43.622658: No module named 'hiddenlayer'
+2024-02-26 14:15:43.681298:
+2024-02-26 14:15:43.682366: Epoch 0
+2024-02-26 14:15:43.683367: start training, 250
+using pin_memory on device 0
+2024-02-26 14:15:49.813396: finished training
+2024-02-26 14:15:50.088113: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:15:50.090505: The split file contains 3 splits.
+2024-02-26 14:15:50.091531: Desired fold for training: 0
+2024-02-26 14:15:50.092460: This split has 16 training and 8 validation cases.
+2024-02-26 14:15:55.610614: predicting TRAIN001_Cirrus took 5.51 s
+2024-02-26 14:16:01.678983: predicting TRAIN002_Cirrus took 4.07 s
+2024-02-26 14:16:07.677918: predicting TRAIN003_Cirrus took 4.07 s
+2024-02-26 14:16:13.657327: predicting TRAIN004_Cirrus took 4.07 s
+2024-02-26 14:16:19.648917: predicting TRAIN005_Cirrus took 4.08 s
+2024-02-26 14:16:25.633826: predicting TRAIN006_Cirrus took 4.07 s
+2024-02-26 14:16:31.627655: predicting TRAIN007_Cirrus took 4.08 s
+2024-02-26 14:16:37.632519: predicting TRAIN008_Cirrus took 4.08 s
+2024-02-26 14:16:59.383204: starting computing scores...
+2024-02-26 14:16:59.385735: DSC: 2.61%
+2024-02-26 14:16:59.386600: DSC_v: 0.45%
+2024-02-26 14:16:59.387477: IRF: 7.12%, SRF: 0.17%, PED: 0.54%
+2024-02-26 14:16:59.388466: current best dsc_v: 0.004532149527221918 at epoch: 0, (0, 0.004532149527221918, 0.02610623836517334)
+2024-02-26 14:16:59.389407: current best dsc: 0.004532149527221918 at epoch: 0, (0, 0.004532149527221918, 0.02610623836517334)
+2024-02-26 14:17:01.492568: finished real validation
+using pin_memory on device 0
+2024-02-26 14:17:02.532531: train_loss 1.5843
+2024-02-26 14:17:02.534213: val_loss 1.5971
+2024-02-26 14:17:02.535643: Pseudo dice [0.0225, 0.0043, 0.0039]
+2024-02-26 14:17:02.536743: Epoch time: 78.85 s
+2024-02-26 14:17:02.537563: Yayy! New best EMA pseudo Dice: 0.0102
+2024-02-26 14:17:06.039145:
+2024-02-26 14:17:06.040462: Epoch 1
+2024-02-26 14:17:06.041396: start training, 250
+2024-02-26 14:17:06.097276: finished training
+2024-02-26 14:17:06.411177: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:17:06.413503: The split file contains 3 splits.
+2024-02-26 14:17:06.414532: Desired fold for training: 0
+2024-02-26 14:17:06.415545: This split has 16 training and 8 validation cases.
+2024-02-26 14:17:10.515692: predicting TRAIN001_Cirrus took 4.10 s
+2024-02-26 14:17:16.748121: predicting TRAIN002_Cirrus took 4.07 s
+2024-02-26 14:17:22.732036: predicting TRAIN003_Cirrus took 4.07 s
+2024-02-26 14:17:28.764690: predicting TRAIN004_Cirrus took 4.06 s
+2024-02-26 14:17:34.775829: predicting TRAIN005_Cirrus took 4.06 s
+2024-02-26 14:17:40.780943: predicting TRAIN006_Cirrus took 4.06 s
+2024-02-26 14:17:46.781446: predicting TRAIN007_Cirrus took 4.06 s
+2024-02-26 14:17:52.745591: predicting TRAIN008_Cirrus took 4.06 s
+2024-02-26 14:18:14.725437: starting computing scores...
+2024-02-26 14:18:14.727711: DSC: 2.61%
+2024-02-26 14:18:14.728447: DSC_v: 0.45%
+2024-02-26 14:18:14.729367: IRF: 7.12%, SRF: 0.17%, PED: 0.54%
+2024-02-26 14:18:14.730136: current best dsc_v: 0.00453578308224678 at epoch: 1, (1, 0.00453578308224678, 0.026109851896762848)
+2024-02-26 14:18:14.730824: current best dsc: 0.00453578308224678 at epoch: 1, (1, 0.00453578308224678, 0.026109851896762848)
+2024-02-26 14:18:16.800323: finished real validation
+2024-02-26 14:18:17.562213: train_loss 1.5979
+2024-02-26 14:18:17.563630: val_loss 1.5864
+2024-02-26 14:18:17.564710: Pseudo dice [0.0264, 0.0026, 0.0075]
+2024-02-26 14:18:17.565737: Epoch time: 71.52 s
+2024-02-26 14:18:17.566553: Yayy! New best EMA pseudo Dice: 0.0104
+2024-02-26 14:18:20.961216:
+2024-02-26 14:18:20.962638: Epoch 2
+2024-02-26 14:18:20.963585: start training, 250
+2024-02-26 14:18:21.017092: finished training
+2024-02-26 14:18:21.370265: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:18:21.372551: The split file contains 3 splits.
+2024-02-26 14:18:21.373554: Desired fold for training: 0
+2024-02-26 14:18:21.374453: This split has 16 training and 8 validation cases.
+2024-02-26 14:18:25.480116: predicting TRAIN001_Cirrus took 4.10 s
+2024-02-26 14:18:31.732854: predicting TRAIN002_Cirrus took 4.07 s
+2024-02-26 14:18:37.722315: predicting TRAIN003_Cirrus took 4.07 s
+2024-02-26 14:18:43.760048: predicting TRAIN004_Cirrus took 4.07 s
+2024-02-26 14:18:49.829984: predicting TRAIN005_Cirrus took 4.08 s
+2024-02-26 14:18:55.911875: predicting TRAIN006_Cirrus took 4.08 s
+2024-02-26 14:19:01.970212: predicting TRAIN007_Cirrus took 4.07 s
+2024-02-26 14:19:07.969496: predicting TRAIN008_Cirrus took 4.07 s
+2024-02-26 14:19:29.483619: starting computing scores...
+2024-02-26 14:19:29.487142: DSC: 2.61%
+2024-02-26 14:19:29.488411: DSC_v: 0.45%
+2024-02-26 14:19:29.489443: IRF: 7.13%, SRF: 0.17%, PED: 0.54%
+2024-02-26 14:19:29.490426: current best dsc_v: 0.004545653238892555 at epoch: 2, (2, 0.004545653238892555, 0.026118233799934387)
+2024-02-26 14:19:29.491234: current best dsc: 0.004545653238892555 at epoch: 2, (2, 0.004545653238892555, 0.026118233799934387)
+2024-02-26 14:19:31.584181: finished real validation
+2024-02-26 14:19:32.356206: train_loss 1.5393
+2024-02-26 14:19:32.357873: val_loss 1.5806
+2024-02-26 14:19:32.359171: Pseudo dice [0.025, 0.0018, 0.0053]
+2024-02-26 14:19:32.360441: Epoch time: 71.4 s
+2024-02-26 14:19:32.361261: Yayy! New best EMA pseudo Dice: 0.0105
+2024-02-26 14:19:35.792100:
+2024-02-26 14:19:35.793277: Epoch 3
+2024-02-26 14:19:35.794215: start training, 250
+2024-02-26 14:19:35.851740: finished training
+2024-02-26 14:19:36.205570: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:19:36.207985: The split file contains 3 splits.
+2024-02-26 14:19:36.208952: Desired fold for training: 0
+2024-02-26 14:19:36.209946: This split has 16 training and 8 validation cases.
+2024-02-26 14:19:40.799134: predicting TRAIN001_Cirrus took 4.58 s
+2024-02-26 14:19:46.983874: predicting TRAIN002_Cirrus took 4.07 s
+2024-02-26 14:19:52.984113: predicting TRAIN003_Cirrus took 4.07 s
+2024-02-26 14:19:59.014524: predicting TRAIN004_Cirrus took 4.07 s
+2024-02-26 14:20:05.060310: predicting TRAIN005_Cirrus took 4.07 s
+2024-02-26 14:20:11.052793: predicting TRAIN006_Cirrus took 4.08 s
+2024-02-26 14:20:17.084820: predicting TRAIN007_Cirrus took 4.10 s
+2024-02-26 14:20:23.089669: predicting TRAIN008_Cirrus took 4.08 s
+2024-02-26 14:20:46.667062: starting computing scores...
+2024-02-26 14:20:46.669967: DSC: 2.61%
+2024-02-26 14:20:46.670974: DSC_v: 0.46%
+2024-02-26 14:20:46.671919: IRF: 7.13%, SRF: 0.17%, PED: 0.54%
+2024-02-26 14:20:46.672887: current best dsc_v: 0.004555854946374893 at epoch: 3, (3, 0.004555854946374893, 0.02612627111375332)
+2024-02-26 14:20:46.673620: current best dsc: 0.004555854946374893 at epoch: 3, (3, 0.004555854946374893, 0.02612627111375332)
+2024-02-26 14:20:48.745406: finished real validation
+2024-02-26 14:20:49.524770: train_loss 1.5904
+2024-02-26 14:20:49.526443: val_loss 1.5662
+2024-02-26 14:20:49.527907: Pseudo dice [0.0313, 0.003, 0.0041]
+2024-02-26 14:20:49.529221: Epoch time: 73.73 s
+2024-02-26 14:20:49.530316: Yayy! New best EMA pseudo Dice: 0.0107
+2024-02-26 14:20:52.896392:
+2024-02-26 14:20:52.897724: Epoch 4
+2024-02-26 14:20:52.898772: start training, 250
+2024-02-26 14:20:52.951853: finished training
+2024-02-26 14:20:53.306463: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:20:53.308960: The split file contains 3 splits.
+2024-02-26 14:20:53.310107: Desired fold for training: 0
+2024-02-26 14:20:53.311229: This split has 16 training and 8 validation cases.
+2024-02-26 14:20:57.418925: predicting TRAIN001_Cirrus took 4.10 s
+2024-02-26 14:21:03.613025: predicting TRAIN002_Cirrus took 4.07 s
+2024-02-26 14:21:09.594885: predicting TRAIN003_Cirrus took 4.07 s
+2024-02-26 14:21:15.644318: predicting TRAIN004_Cirrus took 4.07 s
+2024-02-26 14:21:21.717266: predicting TRAIN005_Cirrus took 4.07 s
+2024-02-26 14:21:27.763004: predicting TRAIN006_Cirrus took 4.07 s
+2024-02-26 14:21:33.811665: predicting TRAIN007_Cirrus took 4.07 s
+2024-02-26 14:21:39.823178: predicting TRAIN008_Cirrus took 4.07 s
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 152, in run_training
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 466, in real_validation_retina
+    reader = self.plans_manager.image_reader_writer_class()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1944, in __call__
+    return output if self.return_generator else list(output)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1587, in _get_outputs
+    yield from self._retrieve()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1699, in _retrieve
+    time.sleep(0.01)

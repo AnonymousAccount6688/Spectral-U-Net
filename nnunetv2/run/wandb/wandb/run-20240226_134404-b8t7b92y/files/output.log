@@ -1,0 +1,44 @@
+===========<class 'dynamic_network_architectures.architectures.unet.ResidualEncoderUNet'>===========
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [False, False, False], 'UNet_class_name': 'ResidualEncoderUNet', 'nnUNet_UNet': False, 'UNet_base_num_features': 32, 'my_net_class': 'unet_plus', 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset122_ISIC2017', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [999.0, 1.0, 1.0], 'original_median_shape_after_transp': [1, 256, 256], 'image_reader_writer': 'NaturalImage2DIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 255.0, 'mean': 160.1475372314453, 'median': 164.0, 'min': 0.0, 'percentile_00_5': 34.0, 'percentile_99_5': 252.0, 'std': 41.12111282348633}, '1': {'max': 255.0, 'mean': 111.18875122070312, 'median': 113.0, 'min': 0.0, 'percentile_00_5': 10.0, 'percentile_99_5': 222.0, 'std': 42.475669860839844}, '2': {'max': 255.0, 'mean': 91.16386413574219, 'median': 90.0, 'min': 0.0, 'percentile_00_5': 5.0, 'percentile_99_5': 207.0, 'std': 42.03706359863281}}}
+2024-02-26 13:44:08.389435: unpacking dataset...
+2024-02-26 13:44:14.272635: unpacking done...
+2024-02-26 13:44:14.274765: do_dummy_2d_data_aug: False
+2024-02-26 13:44:14.294574: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2024-02-26 13:44:14.296143: The split file contains 1 splits.
+2024-02-26 13:44:14.296914: Desired fold for training: 0
+2024-02-26 13:44:14.297487: This split has 1500 training and 650 validation cases.
+==================batch size: 2===================
+2024-02-26 13:44:14.378569: Unable to plot network architecture:
+2024-02-26 13:44:14.379555: No module named 'hiddenlayer'
+2024-02-26 13:44:14.426695:
+2024-02-26 13:44:14.427731: Epoch 0
+2024-02-26 13:44:14.428441: start training, 250
+using pin_memory on device 0
+2024-02-26 13:44:21.034578: finished training
+2024-02-26 13:44:21.369036: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2024-02-26 13:44:21.371337: The split file contains 1 splits.
+2024-02-26 13:44:21.372460: Desired fold for training: 0
+2024-02-26 13:44:21.373623: This split has 1500 training and 650 validation cases.
+2024-02-26 13:44:22.955292: predicting ISIC_0001769 took 1.55 s
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 150, in run_training
+    self.real_validation_retina()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 281, in real_validation_retina
+    ref_arr = sitk.GetArrayFromImage(sitk.ReadImage(ref_file))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/SimpleITK/extra.py", line 375, in ReadImage
+    return reader.Execute()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/SimpleITK/SimpleITK.py", line 8430, in Execute
+    return _SimpleITK.ImageFileReader_Execute(self)
+RuntimeError: Exception thrown in SimpleITK ImageFileReader_Execute: /tmp/SimpleITK/Code/IO/src/sitkImageReaderBase.cxx:97:
+sitk::ERROR: The file "/afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset122_ISIC2017/gt_segmentations/ISIC_0001769.nii.gz" does not exist.

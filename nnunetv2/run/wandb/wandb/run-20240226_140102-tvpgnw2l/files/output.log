@@ -1,0 +1,51 @@
+==============<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>==============
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset003_Cirrus', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [128, 256, 256], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 169.0, 'mean': 40.45668029785156, 'median': 36.0, 'min': 0.0, 'percentile_00_5': 9.0, 'percentile_99_5': 106.0, 'std': 19.84197998046875}}}
+2024-02-26 14:01:06.404031: unpacking dataset...
+2024-02-26 14:01:12.125204: unpacking done...
+2024-02-26 14:01:12.127352: do_dummy_2d_data_aug: False
+2024-02-26 14:01:12.128938: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:01:12.130087: The split file contains 5 splits.
+2024-02-26 14:01:12.130789: Desired fold for training: 0
+2024-02-26 14:01:12.131435: This split has 19 training and 5 validation cases.
+==================batch size: 2===================
+2024-02-26 14:01:12.186403: Unable to plot network architecture:
+2024-02-26 14:01:12.187727: No module named 'hiddenlayer'
+2024-02-26 14:01:12.234896:
+2024-02-26 14:01:12.235872: Epoch 0
+2024-02-26 14:01:12.236720: start training, 250
+using pin_memory on device 0
+2024-02-26 14:01:18.281681: finished training
+2024-02-26 14:01:18.519575: Using splits from existing split file: /afs/crc.nd.edu/user/y/ypeng4/data/preprocessed_data/Dataset003_Cirrus/splits_final.json
+2024-02-26 14:01:18.521972: The split file contains 5 splits.
+2024-02-26 14:01:18.522951: Desired fold for training: 0
+2024-02-26 14:01:18.523842: This split has 19 training and 5 validation cases.
+2024-02-26 14:01:24.026709: predicting TRAIN009_Cirrus took 5.50 s
+2024-02-26 14:01:30.145199: predicting TRAIN011_Cirrus took 4.08 s
+2024-02-26 14:01:36.245712: predicting TRAIN013_Cirrus took 4.08 s
+2024-02-26 14:01:42.362466: predicting TRAIN019_Cirrus took 4.12 s
+2024-02-26 14:01:48.657504: predicting TRAIN021_Cirrus took 4.28 s
+2024-02-26 14:02:07.725143: starting computing scores...
+2024-02-26 14:02:07.727531: DSC: 0.36%
+2024-02-26 14:02:07.728591: DSC_v: 0.37%
+2024-02-26 14:02:07.729401: IRF: 0.26%, SRF: 0.19%, PED: 0.62%
+2024-02-26 14:02:07.730512: current best dsc_v: 0.003747274400666356 at epoch: 0, (0, 0.003747274400666356, 0.0035681966692209244)
+2024-02-26 14:02:07.731598: current best dsc: 0.003747274400666356 at epoch: 0, (0, 0.003747274400666356, 0.0035681966692209244)
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 152, in run_training
+    self.real_validation_retina()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/retinaTrainer.py", line 600, in real_validation_retina
+    self.save_checkpoint(join(self.output_folder, "dsc_slice_best.pth"))
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1183, in save_checkpoint
+    "backbone_lr": self.backbone_lr,
+AttributeError: 'RetinaTrainer' object has no attribute 'backbone_lr'

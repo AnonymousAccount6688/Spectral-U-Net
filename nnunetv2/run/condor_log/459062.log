@@ -1,0 +1,35 @@
+000 (459062.000.000) 09/06 06:21:59 Job submitted from host: <10.32.85.31:9618?addrs=10.32.85.31-9618&noUDP&sock=2288_f4c7_3>
+...
+001 (459062.000.000) 09/06 06:22:29 Job executing on host: <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=2276990_539a_304>
+...
+006 (459062.000.000) 09/06 06:22:38 Image size of job updated: 314352
+	307  -  MemoryUsage of job (MB)
+	314352  -  ResidentSetSize of job (KB)
+...
+006 (459062.000.000) 09/06 06:27:39 Image size of job updated: 194160544
+	4323  -  MemoryUsage of job (MB)
+	4426072  -  ResidentSetSize of job (KB)
+...
+006 (459062.000.000) 09/06 06:32:39 Image size of job updated: 343703756
+	5368  -  MemoryUsage of job (MB)
+	5496564  -  ResidentSetSize of job (KB)
+...
+006 (459062.000.000) 09/06 06:33:41 Image size of job updated: 362660640
+	7731  -  MemoryUsage of job (MB)
+	7916092  -  ResidentSetSize of job (KB)
+...
+004 (459062.000.000) 09/06 06:33:41 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:30:35, Sys 0 00:02:53  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	16127  -  Run Bytes Sent By Job
+	1225  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated Assigned
+	   Cpus                 :       8.84       12        12 
+	   Disk (KB)            : 3558282    31457280  31693748 
+	   Gpus                 :       0.59        1         1 "CUDA1"
+	   Memory (MB)          :    7731       65536     65536 
+...
+009 (459062.000.000) 09/06 06:33:41 Job was aborted by the user.
+	via condor_rm (by user ypeng4)
+...

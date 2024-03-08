@@ -1,0 +1,169 @@
+<class 'nnunetv2.training.network.model.waveunet.brain_wave_unet.WaveUNet'>
+============<class 'nnunetv2.training.network.model.waveunet.brain_wave_unet.WaveUNet'>=============
+lr: 0.01
+ds wegihts: [0.50793651 0.25396825 0.12698413 0.06349206 0.03174603 0.01587302]
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 105, 'patch_size': [192, 160], 'median_image_size_in_voxels': [169.0, 138.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [True, True, True, True], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2], 'num_pool_per_axis': [5, 5], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset201_BrainTumour', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 1.0, 1.0], 'original_median_shape_after_transp': [138, 169, 138], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 5721.0, 'mean': 728.8666381835938, 'median': 779.0, 'min': 0.0, 'percentile_00_5': 104.0, 'percentile_99_5': 1733.0, 'std': 354.5618896484375}, '1': {'max': 8761.0, 'mean': 621.560791015625, 'median': 644.0, 'min': 0.0, 'percentile_00_5': 56.0, 'percentile_99_5': 2421.0, 'std': 335.946044921875}, '2': {'max': 9012.0, 'mean': 662.5552368164062, 'median': 639.0, 'min': 0.0, 'percentile_00_5': 44.0, 'percentile_99_5': 2963.0, 'std': 420.2735595703125}, '3': {'max': 3346.0, 'mean': 664.2885131835938, 'median': 647.0, 'min': 0.0, 'percentile_00_5': 103.0, 'percentile_99_5': 1997.0, 'std': 318.48980712890625}}}
+2024-02-28 17:08:12.435687: unpacking dataset...
+2024-02-28 17:08:18.123317: unpacking done...
+2024-02-28 17:08:18.125437: do_dummy_2d_data_aug: False
+2024-02-28 17:08:18.130137: Using splits from existing split file: /scratch365/ypeng4/data/preprocessed_data/Dataset201_BrainTumour/splits_final.json
+2024-02-28 17:08:18.131895: The split file contains 5 splits.
+2024-02-28 17:08:18.132926: Desired fold for training: 0
+2024-02-28 17:08:18.133877: This split has 387 training and 97 validation cases.
+==================batch size: 2===================
+2024-02-28 17:08:18.185789: Unable to plot network architecture:
+2024-02-28 17:08:18.186755: No module named 'hiddenlayer'
+lr: 0.01
+2024-02-28 17:08:18.228651:
+2024-02-28 17:08:18.229395: Epoch 0
+2024-02-28 17:08:18.230496: start training, 250
+2024-02-28 17:08:18.231339: learning rate: 0.01
+using pin_memory on device 0
+2024-02-28 17:08:22.861916: finished training
+2024-02-28 17:08:23.051157: Using splits from existing split file: /scratch365/ypeng4/data/preprocessed_data/Dataset201_BrainTumour/splits_final.json
+2024-02-28 17:08:23.053989: The split file contains 5 splits.
+2024-02-28 17:08:23.054948: Desired fold for training: 0
+2024-02-28 17:08:23.055827: This split has 387 training and 97 validation cases.
+2024-02-28 17:08:29.535613: predicting BRATS_010 took 6.47 s
+2024-02-28 17:08:35.461141: predicting BRATS_011 took 5.18 s
+2024-02-28 17:08:41.363709: predicting BRATS_012 took 5.29 s
+2024-02-28 17:08:47.533244: predicting BRATS_018 took 5.49 s
+2024-02-28 17:08:53.651754: predicting BRATS_020 took 5.43 s
+2024-02-28 17:08:59.502032: predicting BRATS_028 took 5.12 s
+2024-02-28 17:09:05.177718: predicting BRATS_029 took 5.02 s
+2024-02-28 17:09:11.130233: predicting BRATS_032 took 5.27 s
+2024-02-28 17:09:16.961252: predicting BRATS_034 took 5.18 s
+2024-02-28 17:09:22.903345: predicting BRATS_041 took 5.27 s
+2024-02-28 17:09:28.835384: predicting BRATS_042 took 5.26 s
+2024-02-28 17:09:34.724741: predicting BRATS_047 took 5.29 s
+2024-02-28 17:09:40.780241: predicting BRATS_049 took 5.45 s
+2024-02-28 17:09:46.672582: predicting BRATS_053 took 5.24 s
+2024-02-28 17:09:52.435496: predicting BRATS_056 took 5.22 s
+2024-02-28 17:09:58.290433: predicting BRATS_057 took 5.30 s
+2024-02-28 17:10:03.988307: predicting BRATS_067 took 5.15 s
+2024-02-28 17:10:09.790616: predicting BRATS_069 took 5.13 s
+2024-02-28 17:10:15.363605: predicting BRATS_085 took 4.90 s
+2024-02-28 17:10:21.049708: predicting BRATS_086 took 5.11 s
+2024-02-28 17:10:27.023820: predicting BRATS_088 took 5.24 s
+2024-02-28 17:10:32.801843: predicting BRATS_091 took 5.11 s
+2024-02-28 17:10:38.777467: predicting BRATS_098 took 5.31 s
+2024-02-28 17:10:44.325536: predicting BRATS_100 took 4.93 s
+2024-02-28 17:10:49.898752: predicting BRATS_101 took 4.92 s
+2024-02-28 17:10:56.116075: predicting BRATS_102 took 5.56 s
+2024-02-28 17:11:02.042287: predicting BRATS_104 took 5.32 s
+2024-02-28 17:11:07.885389: predicting BRATS_111 took 5.18 s
+2024-02-28 17:11:13.867376: predicting BRATS_116 took 5.33 s
+2024-02-28 17:11:19.760850: predicting BRATS_135 took 5.24 s
+2024-02-28 17:11:25.531125: predicting BRATS_136 took 5.12 s
+2024-02-28 17:11:31.379040: predicting BRATS_138 took 5.23 s
+2024-02-28 17:11:37.497875: predicting BRATS_145 took 5.48 s
+2024-02-28 17:11:43.345005: predicting BRATS_149 took 5.21 s
+2024-02-28 17:11:49.268760: predicting BRATS_155 took 5.23 s
+2024-02-28 17:11:55.207694: predicting BRATS_157 took 5.24 s
+2024-02-28 17:12:01.137280: predicting BRATS_158 took 5.24 s
+2024-02-28 17:12:06.688559: predicting BRATS_159 took 4.94 s
+2024-02-28 17:12:12.517417: predicting BRATS_163 took 5.21 s
+2024-02-28 17:12:18.001838: predicting BRATS_164 took 4.88 s
+2024-02-28 17:12:23.834711: predicting BRATS_169 took 5.27 s
+2024-02-28 17:12:29.610643: predicting BRATS_176 took 5.12 s
+2024-02-28 17:12:35.642639: predicting BRATS_181 took 5.41 s
+2024-02-28 17:12:41.561485: predicting BRATS_183 took 5.25 s
+2024-02-28 17:12:47.512246: predicting BRATS_184 took 5.31 s
+2024-02-28 17:12:53.359026: predicting BRATS_187 took 5.21 s
+2024-02-28 17:12:58.907865: predicting BRATS_192 took 4.91 s
+2024-02-28 17:13:04.840753: predicting BRATS_198 took 5.36 s
+2024-02-28 17:13:10.595366: predicting BRATS_207 took 5.06 s
+2024-02-28 17:13:16.313969: predicting BRATS_208 took 5.08 s
+2024-02-28 17:13:22.393175: predicting BRATS_218 took 5.45 s
+2024-02-28 17:13:28.436797: predicting BRATS_220 took 5.31 s
+2024-02-28 17:13:34.386421: predicting BRATS_224 took 5.27 s
+2024-02-28 17:13:40.193989: predicting BRATS_230 took 5.15 s
+2024-02-28 17:13:46.157014: predicting BRATS_271 took 5.32 s
+2024-02-28 17:13:52.063285: predicting BRATS_282 took 5.22 s
+2024-02-28 17:13:57.602074: predicting BRATS_284 took 4.87 s
+2024-02-28 17:14:03.257691: predicting BRATS_287 took 5.13 s
+2024-02-28 17:14:08.809417: predicting BRATS_290 took 4.88 s
+2024-02-28 17:14:14.636368: predicting BRATS_291 took 5.16 s
+2024-02-28 17:14:20.345860: predicting BRATS_292 took 5.10 s
+2024-02-28 17:14:26.512508: predicting BRATS_293 took 5.50 s
+2024-02-28 17:14:32.548384: predicting BRATS_300 took 5.28 s
+2024-02-28 17:14:38.551558: predicting BRATS_305 took 5.34 s
+2024-02-28 17:14:44.532025: predicting BRATS_311 took 5.28 s
+2024-02-28 17:14:50.477650: predicting BRATS_314 took 5.23 s
+2024-02-28 17:14:56.499715: predicting BRATS_321 took 5.30 s
+2024-02-28 17:15:02.577780: predicting BRATS_328 took 5.42 s
+2024-02-28 17:15:08.078680: predicting BRATS_329 took 4.89 s
+2024-02-28 17:15:14.054402: predicting BRATS_335 took 5.32 s
+2024-02-28 17:15:20.031806: predicting BRATS_343 took 5.30 s
+2024-02-28 17:15:25.856257: predicting BRATS_350 took 5.10 s
+2024-02-28 17:15:31.411200: predicting BRATS_351 took 5.01 s
+2024-02-28 17:15:37.431512: predicting BRATS_356 took 5.48 s
+2024-02-28 17:15:43.305404: predicting BRATS_366 took 5.28 s
+2024-02-28 17:15:49.241299: predicting BRATS_367 took 5.32 s
+2024-02-28 17:15:55.221443: predicting BRATS_374 took 5.29 s
+2024-02-28 17:16:01.217036: predicting BRATS_376 took 5.33 s
+2024-02-28 17:16:07.302040: predicting BRATS_377 took 5.43 s
+2024-02-28 17:16:13.540470: predicting BRATS_378 took 5.53 s
+2024-02-28 17:16:19.738488: predicting BRATS_379 took 5.52 s
+2024-02-28 17:16:25.417802: predicting BRATS_384 took 4.97 s
+2024-02-28 17:16:31.366167: predicting BRATS_386 took 5.32 s
+2024-02-28 17:16:37.575381: predicting BRATS_394 took 5.54 s
+2024-02-28 17:16:44.154988: predicting BRATS_398 took 5.52 s
+2024-02-28 17:16:50.498029: predicting BRATS_400 took 5.65 s
+2024-02-28 17:16:56.699293: predicting BRATS_432 took 5.43 s
+2024-02-28 17:17:02.437331: predicting BRATS_437 took 5.07 s
+2024-02-28 17:17:08.448691: predicting BRATS_445 took 5.39 s
+2024-02-28 17:17:14.359833: predicting BRATS_446 took 5.29 s
+2024-02-28 17:17:20.087276: predicting BRATS_450 took 5.05 s
+2024-02-28 17:17:25.909689: predicting BRATS_452 took 5.24 s
+2024-02-28 17:17:32.062611: predicting BRATS_460 took 5.49 s
+2024-02-28 17:17:38.304487: predicting BRATS_470 took 5.58 s
+2024-02-28 17:17:44.259775: predicting BRATS_472 took 5.32 s
+2024-02-28 17:17:49.483916: predicting BRATS_473 took 4.60 s
+2024-02-28 17:17:55.509773: predicting BRATS_482 took 5.47 s
+joblib.externals.loky.process_executor._RemoteTraceback:
+"""
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/_parallel_backends.py", line 273, in _wrap_func_call
+    return func()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 588, in __call__
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 588, in <listcomp>
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 424, in get_score
+    case_hd95 = medpy.metric.hd95(seg_pred, seg_ref, voxelspacing=(1, 1, 1))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/medpy/metric/binary.py", line 396, in hd95
+    hd1 = __surface_distances(result, reference, voxelspacing, connectivity)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/medpy/metric/binary.py", line 1200, in __surface_distances
+    result = numpy.atleast_1d(result.astype(numpy.bool))
+AttributeError: 'Tensor' object has no attribute 'astype'
+"""
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 231, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 158, in run_training
+    self.real_validation_brain()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 439, in real_validation_brain
+    results = Parallel(-1, prefer="threads")(delayed(get_score)(file_ref, file_pred, ref_reader, pred_reader)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1944, in __call__
+    return output if self.return_generator else list(output)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1587, in _get_outputs
+    yield from self._retrieve()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1691, in _retrieve
+    self._raise_error_fast()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 1726, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 735, in get_result
+    return self._return_or_raise()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/joblib/parallel.py", line 753, in _return_or_raise
+    raise self._result
+AttributeError: 'Tensor' object has no attribute 'astype'

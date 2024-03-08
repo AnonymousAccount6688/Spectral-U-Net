@@ -1,0 +1,16 @@
+<class 'nnunetv2.training.network.model.waveunet.brain_unet.UNet'>
+=================<class 'nnunetv2.training.network.model.waveunet.brain_unet.UNet'>=================
+lr: 0.01
+ds wegihts: [0.50793651 0.25396825 0.12698413 0.06349206 0.03174603 0.01587302]
+loading from : /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset201_BrainTumour/BrainTrainer__nnUNetPlans__2d/unknown_my_unet_FusedMBConv_16/fold_0/checkpoint_best.pth
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 301, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 295, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 222, in run_training
+    maybe_load_checkpoint(nnunet_trainer, continue_training, only_run_validation, pretrained_weights)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 124, in maybe_load_checkpoint
+    nnunet_trainer.load_checkpoint(expected_checkpoint_file)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/brainTrainer.py", line 560, in load_checkpoint
+    checkpoint = torch.load(filename_or_checkpoint, map_location=self.device)

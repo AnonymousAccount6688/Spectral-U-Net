@@ -1,0 +1,64 @@
+2024-03-06 12:22:21,191 INFO    StreamThr :858142 [internal.py:wandb_internal():86] W&B internal server running at pid: 858142, started at: 2024-03-06 12:22:21.189695
+2024-03-06 12:22:21,193 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status
+2024-03-06 12:22:21,196 INFO    WriterThread:858142 [datastore.py:open_for_write():85] open: wandb/wandb/run-20240306_122221-kbbfkdnt/run-kbbfkdnt.wandb
+2024-03-06 12:22:21,205 DEBUG   SenderThread:858142 [sender.py:send():369] send: header
+2024-03-06 12:22:21,224 DEBUG   SenderThread:858142 [sender.py:send():369] send: run
+2024-03-06 12:22:21,232 INFO    SenderThread:858142 [sender.py:_maybe_setup_resume():737] checking resume status for None/Liver/kbbfkdnt
+2024-03-06 12:22:21,598 INFO    SenderThread:858142 [dir_watcher.py:__init__():211] watching files in: wandb/wandb/run-20240306_122221-kbbfkdnt/files
+2024-03-06 12:22:21,598 INFO    SenderThread:858142 [sender.py:_start_run_threads():1100] run started: kbbfkdnt with start time 1709745741.18592
+2024-03-06 12:22:21,608 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: summary_record
+2024-03-06 12:22:21,609 INFO    SenderThread:858142 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-03-06 12:22:21,620 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: check_version
+2024-03-06 12:22:21,621 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: check_version
+2024-03-06 12:22:21,748 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: run_start
+2024-03-06 12:22:21,769 DEBUG   HandlerThread:858142 [system_info.py:__init__():31] System info init
+2024-03-06 12:22:21,769 DEBUG   HandlerThread:858142 [system_info.py:__init__():46] System info init done
+2024-03-06 12:22:21,769 INFO    HandlerThread:858142 [system_monitor.py:start():181] Starting system monitor
+2024-03-06 12:22:21,770 INFO    SystemMonitor:858142 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2024-03-06 12:22:21,771 INFO    HandlerThread:858142 [system_monitor.py:probe():201] Collecting system info
+2024-03-06 12:22:21,772 INFO    SystemMonitor:858142 [interfaces.py:start():190] Started cpu monitoring
+2024-03-06 12:22:21,773 INFO    SystemMonitor:858142 [interfaces.py:start():190] Started disk monitoring
+2024-03-06 12:22:21,775 INFO    SystemMonitor:858142 [interfaces.py:start():190] Started gpu monitoring
+2024-03-06 12:22:21,776 INFO    SystemMonitor:858142 [interfaces.py:start():190] Started memory monitoring
+2024-03-06 12:22:21,778 INFO    SystemMonitor:858142 [interfaces.py:start():190] Started network monitoring
+2024-03-06 12:22:21,808 DEBUG   HandlerThread:858142 [system_info.py:probe():195] Probing system
+2024-03-06 12:22:21,821 DEBUG   HandlerThread:858142 [system_info.py:_probe_git():180] Probing git
+2024-03-06 12:22:21,853 DEBUG   HandlerThread:858142 [system_info.py:_probe_git():188] Probing git done
+2024-03-06 12:22:21,854 DEBUG   HandlerThread:858142 [system_info.py:probe():240] Probing system done
+2024-03-06 12:22:21,854 DEBUG   HandlerThread:858142 [system_monitor.py:probe():210] {'os': 'Linux-4.18.0-513.5.1.el8_9.x86_64-x86_64-with-glibc2.17', 'python': '3.8.17', 'heartbeatAt': '2024-03-06T17:22:21.808663', 'startedAt': '2024-03-06T17:22:21.163567', 'docker': None, 'cuda': None, 'args': ('203', '2d', '0', '-tr', 'LiverTrainer', '--c'), 'state': 'running', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py', 'codePath': 'nnunetv2/run/run_training.py', 'git': {'remote': None, 'commit': '0649e96abf91b57bc23f8420e77da6b3d0a71251'}, 'email': 'ypeng4@nd.edu', 'root': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet', 'host': 'qa-p100-004.crc.nd.edu', 'username': 'ypeng4', 'executable': '/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/bin/python', 'cpu_count': 24, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2.8937083333333327, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 2.797, 'min': 1200.0, 'max': 2900.0}, {'current': 2.795, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}], 'disk': {'total': 1861.1064376831055, 'used': 64.11140441894531}, 'gpu': 'Tesla P100-PCIE-16GB', 'gpu_count': 4, 'gpu_devices': [{'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}], 'memory': {'total': 125.25444793701172}}
+2024-03-06 12:22:21,854 INFO    HandlerThread:858142 [system_monitor.py:probe():211] Finished collecting system info
+2024-03-06 12:22:21,854 INFO    HandlerThread:858142 [system_monitor.py:probe():214] Publishing system info
+2024-03-06 12:22:21,854 DEBUG   HandlerThread:858142 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-03-06 12:22:21,859 DEBUG   HandlerThread:858142 [system_info.py:_save_pip():67] Saving pip packages done
+2024-03-06 12:22:21,859 DEBUG   HandlerThread:858142 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-03-06 12:22:22,604 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240306_122221-kbbfkdnt/files/conda-environment.yaml
+2024-03-06 12:22:22,605 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240306_122221-kbbfkdnt/files/wandb-summary.json
+2024-03-06 12:22:22,605 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240306_122221-kbbfkdnt/files/requirements.txt
+2024-03-06 12:22:23,373 DEBUG   HandlerThread:858142 [system_info.py:_save_conda():86] Saving conda packages done
+2024-03-06 12:22:23,394 INFO    HandlerThread:858142 [system_monitor.py:probe():216] Finished publishing system info
+2024-03-06 12:22:23,407 DEBUG   SenderThread:858142 [sender.py:send():369] send: files
+2024-03-06 12:22:23,407 INFO    SenderThread:858142 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2024-03-06 12:22:23,430 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: stop_status
+2024-03-06 12:22:23,433 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: stop_status
+2024-03-06 12:22:23,599 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240306_122221-kbbfkdnt/files/wandb-metadata.json
+2024-03-06 12:22:23,625 DEBUG   SenderThread:858142 [sender.py:send():369] send: telemetry
+2024-03-06 12:22:23,753 INFO    wandb-upload_0:858142 [upload_job.py:push():133] Uploaded file /tmp/165047.1.gpu/tmpwygz73w4wandb/habhmg0s-wandb-metadata.json
+2024-03-06 12:22:24,600 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240306_122221-kbbfkdnt/files/output.log
+2024-03-06 12:22:26,602 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240306_122221-kbbfkdnt/files/output.log
+2024-03-06 12:22:26,795 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:31,797 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:36,797 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:38,422 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: stop_status
+2024-03-06 12:22:38,423 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: stop_status
+2024-03-06 12:22:42,500 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:47,501 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:52,507 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:22:53,428 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: stop_status
+2024-03-06 12:22:54,557 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: stop_status
+2024-03-06 12:22:54,621 INFO    Thread-16 :858142 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240306_122221-kbbfkdnt/files/config.yaml
+2024-03-06 12:23:00,183 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:23:05,184 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:23:08,433 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: stop_status
+2024-03-06 12:23:08,435 DEBUG   SenderThread:858142 [sender.py:send_request():396] send_request: stop_status
+2024-03-06 12:23:10,533 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report
+2024-03-06 12:23:15,534 DEBUG   HandlerThread:858142 [handler.py:handle_request():144] handle_request: status_report

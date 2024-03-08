@@ -1,0 +1,108 @@
+2024-02-28 17:24:38,764 INFO    StreamThr :157696 [internal.py:wandb_internal():86] W&B internal server running at pid: 157696, started at: 2024-02-28 17:24:38.763096
+2024-02-28 17:24:38,765 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status
+2024-02-28 17:24:38,766 INFO    WriterThread:157696 [datastore.py:open_for_write():85] open: wandb/wandb/run-20240228_172438-zr6xtvst/run-zr6xtvst.wandb
+2024-02-28 17:24:38,770 DEBUG   SenderThread:157696 [sender.py:send():369] send: header
+2024-02-28 17:24:38,795 DEBUG   SenderThread:157696 [sender.py:send():369] send: run
+2024-02-28 17:24:38,797 INFO    SenderThread:157696 [sender.py:_maybe_setup_resume():737] checking resume status for None/Cirrus_0/zr6xtvst
+2024-02-28 17:24:39,157 INFO    SenderThread:157696 [dir_watcher.py:__init__():211] watching files in: wandb/wandb/run-20240228_172438-zr6xtvst/files
+2024-02-28 17:24:39,157 INFO    SenderThread:157696 [sender.py:_start_run_threads():1100] run started: zr6xtvst with start time 1709159078.761936
+2024-02-28 17:24:39,160 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: summary_record
+2024-02-28 17:24:39,161 INFO    SenderThread:157696 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-02-28 17:24:39,168 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: check_version
+2024-02-28 17:24:39,168 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: check_version
+2024-02-28 17:24:39,277 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: run_start
+2024-02-28 17:24:39,297 DEBUG   HandlerThread:157696 [system_info.py:__init__():31] System info init
+2024-02-28 17:24:39,298 DEBUG   HandlerThread:157696 [system_info.py:__init__():46] System info init done
+2024-02-28 17:24:39,298 INFO    HandlerThread:157696 [system_monitor.py:start():181] Starting system monitor
+2024-02-28 17:24:39,298 INFO    SystemMonitor:157696 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2024-02-28 17:24:39,298 INFO    HandlerThread:157696 [system_monitor.py:probe():201] Collecting system info
+2024-02-28 17:24:39,299 INFO    SystemMonitor:157696 [interfaces.py:start():190] Started cpu monitoring
+2024-02-28 17:24:39,299 INFO    SystemMonitor:157696 [interfaces.py:start():190] Started disk monitoring
+2024-02-28 17:24:39,300 INFO    SystemMonitor:157696 [interfaces.py:start():190] Started gpu monitoring
+2024-02-28 17:24:39,302 INFO    SystemMonitor:157696 [interfaces.py:start():190] Started memory monitoring
+2024-02-28 17:24:39,302 INFO    SystemMonitor:157696 [interfaces.py:start():190] Started network monitoring
+2024-02-28 17:24:39,341 DEBUG   HandlerThread:157696 [system_info.py:probe():195] Probing system
+2024-02-28 17:24:39,352 DEBUG   HandlerThread:157696 [system_info.py:_probe_git():180] Probing git
+2024-02-28 17:24:39,374 DEBUG   HandlerThread:157696 [system_info.py:_probe_git():188] Probing git done
+2024-02-28 17:24:39,374 DEBUG   HandlerThread:157696 [system_info.py:probe():240] Probing system done
+2024-02-28 17:24:39,374 DEBUG   HandlerThread:157696 [system_monitor.py:probe():210] {'os': 'Linux-4.18.0-513.5.1.el8_9.x86_64-x86_64-with-glibc2.17', 'python': '3.8.17', 'heartbeatAt': '2024-02-28T22:24:39.341399', 'startedAt': '2024-02-28T22:24:38.721254', 'docker': None, 'cuda': None, 'args': ('201', '2d', '0', '-tr', 'BrainTrainer'), 'state': 'running', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py', 'codePath': 'nnunetv2/run/run_training.py', 'git': {'remote': None, 'commit': '0649e96abf91b57bc23f8420e77da6b3d0a71251'}, 'email': 'ypeng4@nd.edu', 'root': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet', 'host': 'qa-p100-005.crc.nd.edu', 'username': 'ypeng4', 'executable': '/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/bin/python', 'cpu_count': 24, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2.8449583333333326, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.462, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.324, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}, {'current': 2.9, 'min': 1200.0, 'max': 2900.0}], 'disk': {'total': 930.0573692321777, 'used': 57.793739318847656}, 'gpu': 'Tesla P100-PCIE-16GB', 'gpu_count': 4, 'gpu_devices': [{'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}, {'name': 'Tesla P100-PCIE-16GB', 'memory_total': 17179869184}], 'memory': {'total': 125.25444030761719}}
+2024-02-28 17:24:39,374 INFO    HandlerThread:157696 [system_monitor.py:probe():211] Finished collecting system info
+2024-02-28 17:24:39,374 INFO    HandlerThread:157696 [system_monitor.py:probe():214] Publishing system info
+2024-02-28 17:24:39,374 DEBUG   HandlerThread:157696 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-02-28 17:24:39,376 DEBUG   HandlerThread:157696 [system_info.py:_save_pip():67] Saving pip packages done
+2024-02-28 17:24:39,376 DEBUG   HandlerThread:157696 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-02-28 17:24:40,159 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_172438-zr6xtvst/files/conda-environment.yaml
+2024-02-28 17:24:40,160 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_172438-zr6xtvst/files/requirements.txt
+2024-02-28 17:24:40,160 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_172438-zr6xtvst/files/wandb-summary.json
+2024-02-28 17:24:40,938 DEBUG   HandlerThread:157696 [system_info.py:_save_conda():86] Saving conda packages done
+2024-02-28 17:24:40,941 INFO    HandlerThread:157696 [system_monitor.py:probe():216] Finished publishing system info
+2024-02-28 17:24:40,946 DEBUG   SenderThread:157696 [sender.py:send():369] send: files
+2024-02-28 17:24:40,946 INFO    SenderThread:157696 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2024-02-28 17:24:41,106 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:24:41,107 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:24:41,158 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_172438-zr6xtvst/files/wandb-metadata.json
+2024-02-28 17:24:41,226 DEBUG   SenderThread:157696 [sender.py:send():369] send: telemetry
+2024-02-28 17:24:41,282 INFO    wandb-upload_0:157696 [upload_job.py:push():133] Uploaded file /tmp/137939.1.gpu/tmp_j_r5gy6wandb/uv23pogo-wandb-metadata.json
+2024-02-28 17:24:42,159 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_created():272] file/dir created: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:24:44,147 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:24:44,160 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:24:49,173 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:24:50,163 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:24:52,165 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:24:54,166 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:24:55,113 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:24:56,107 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:24:56,108 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:25:00,170 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:00,695 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:06,172 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:06,532 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:11,107 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:25:11,107 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:25:12,175 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:12,176 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:13,176 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/config.yaml
+2024-02-28 17:25:17,746 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:18,178 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:22,808 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:24,180 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:26,107 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:25:26,108 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:25:28,000 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:30,182 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:33,000 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:36,184 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:38,171 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:39,303 DEBUG   SystemMonitor:157696 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2024-02-28 17:25:39,304 DEBUG   SenderThread:157696 [sender.py:send():369] send: stats
+2024-02-28 17:25:41,108 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:25:41,110 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:25:42,187 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:43,214 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:48,188 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:48,989 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:54,190 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:25:54,970 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:25:56,107 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:25:56,107 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:26:00,192 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:00,917 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:05,928 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:06,194 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:09,306 DEBUG   SenderThread:157696 [sender.py:send():369] send: stats
+2024-02-28 17:26:11,107 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:26:11,108 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:26:11,256 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:12,196 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:16,257 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:18,199 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:21,823 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:24,201 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:26,108 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: stop_status
+2024-02-28 17:26:26,108 DEBUG   SenderThread:157696 [sender.py:send_request():396] send_request: stop_status
+2024-02-28 17:26:27,213 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:30,203 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:32,340 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:36,205 INFO    Thread-12 :157696 [dir_watcher.py:_on_file_modified():289] file/dir modified: wandb/wandb/run-20240228_172438-zr6xtvst/files/output.log
+2024-02-28 17:26:38,293 DEBUG   HandlerThread:157696 [handler.py:handle_request():144] handle_request: status_report
+2024-02-28 17:26:39,307 DEBUG   SenderThread:157696 [sender.py:send():369] send: stats

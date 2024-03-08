@@ -1,0 +1,154 @@
+000 (459064.000.000) 09/06 06:38:00 Job submitted from host: <10.32.85.31:9618?addrs=10.32.85.31-9618&noUDP&sock=2288_f4c7_3>
+...
+001 (459064.000.000) 09/06 06:38:30 Job executing on host: <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=2276990_539a_304>
+...
+006 (459064.000.000) 09/06 06:38:39 Image size of job updated: 310600
+	304  -  MemoryUsage of job (MB)
+	310600  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 06:43:41 Image size of job updated: 195964448
+	4332  -  MemoryUsage of job (MB)
+	4435704  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 06:48:41 Image size of job updated: 351904576
+	7448  -  MemoryUsage of job (MB)
+	7626424  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 06:53:41 Image size of job updated: 363284948
+	7448  -  MemoryUsage of job (MB)
+	7626424  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 06:58:42 Image size of job updated: 367746560
+	7448  -  MemoryUsage of job (MB)
+	7626424  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 07:58:46 Image size of job updated: 367746560
+	7866  -  MemoryUsage of job (MB)
+	8054524  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 09:53:54 Image size of job updated: 367746560
+	9034  -  MemoryUsage of job (MB)
+	9250528  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 09:58:55 Image size of job updated: 367746560
+	9038  -  MemoryUsage of job (MB)
+	9254040  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 10:13:56 Image size of job updated: 367746560
+	9059  -  MemoryUsage of job (MB)
+	9276088  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 11:49:07 Image size of job updated: 367746560
+	9811  -  MemoryUsage of job (MB)
+	10045992  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 12:29:11 Image size of job updated: 367746560
+	10122  -  MemoryUsage of job (MB)
+	10364460  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 12:34:12 Image size of job updated: 367746560
+	10122  -  MemoryUsage of job (MB)
+	10364464  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 13:29:18 Image size of job updated: 367746560
+	10288  -  MemoryUsage of job (MB)
+	10534632  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 14:54:27 Image size of job updated: 367746560
+	10720  -  MemoryUsage of job (MB)
+	10976440  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 18:34:50 Image size of job updated: 367746560
+	10899  -  MemoryUsage of job (MB)
+	11159912  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 18:39:52 Image size of job updated: 367746560
+	10922  -  MemoryUsage of job (MB)
+	11183276  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 18:54:53 Image size of job updated: 367746560
+	12105  -  MemoryUsage of job (MB)
+	12394900  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/06 18:59:54 Image size of job updated: 367746560
+	12106  -  MemoryUsage of job (MB)
+	12395840  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/07 01:20:35 Image size of job updated: 367746560
+	12167  -  MemoryUsage of job (MB)
+	12458860  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/07 02:45:42 Image size of job updated: 367746560
+	12247  -  MemoryUsage of job (MB)
+	12540712  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/07 02:50:43 Image size of job updated: 367746560
+	12247  -  MemoryUsage of job (MB)
+	12540716  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/07 04:50:55 Image size of job updated: 367746560
+	12340  -  MemoryUsage of job (MB)
+	12635564  -  ResidentSetSize of job (KB)
+...
+006 (459064.000.000) 09/07 11:16:39 Image size of job updated: 367746560
+	12358  -  MemoryUsage of job (MB)
+	12654020  -  ResidentSetSize of job (KB)
+...
+022 (459064.000.000) 09/07 14:14:46 Job disconnected, attempting to reconnect
+    Local schedd and job shadow died, schedd now running again
+    Trying to reconnect to slot1_1@qa-rtx6k-022.crc.nd.edu <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=2276990_539a_304>
+...
+023 (459064.000.000) 09/07 14:14:46 Job reconnected to slot1_1@qa-rtx6k-022.crc.nd.edu
+    startd address: <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=2276990_539a_304>
+    starter address: <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=784096_5086_132>
+...
+004 (459064.000.000) 09/07 14:14:46 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 3 08:22:58, Sys 0 06:02:58  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	398099  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       1.13       12        12 
+	   Disk (KB)            : 3750000    31457280  31693748 
+	   Memory (MB)          :   14649       65536     65536 
+...
+001 (459064.000.000) 09/07 14:15:04 Job executing on host: <10.32.88.247:9618?addrs=10.32.88.247-9618&noUDP&sock=2119_0946_3>
+...
+022 (459064.000.000) 09/07 14:54:59 Job disconnected, attempting to reconnect
+    Local schedd and job shadow died, schedd now running again
+    Trying to reconnect to slot1_1@qa-rtx6k-009.crc.nd.edu <10.32.88.247:9618?addrs=10.32.88.247-9618&noUDP&sock=2119_0946_3>
+...
+023 (459064.000.000) 09/07 14:54:59 Job reconnected to slot1_1@qa-rtx6k-009.crc.nd.edu
+    startd address: <10.32.88.247:9618?addrs=10.32.88.247-9618&noUDP&sock=2119_0946_3>
+    starter address: <10.32.88.247:9618?addrs=10.32.88.247-9618&noUDP&sock=91872_e291_4>
+...
+004 (459064.000.000) 09/07 14:55:00 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 01:39:45, Sys 0 00:08:37  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	21461  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       1.15       12        12 
+	   Disk (KB)            : 3750000    31457280  31718072 
+	   Memory (MB)          :   14649       65536     65536 
+...
+001 (459064.000.000) 09/07 14:55:12 Job executing on host: <10.32.89.93:9618?addrs=10.32.89.93-9618&noUDP&sock=2106_1e8a_3>
+...
+005 (459064.000.000) 09/07 14:56:39 Job terminated.
+	(1) Normal termination (return value 1)
+		Usr 0 00:00:09, Sys 0 00:00:14  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 6 19:09:53, Sys 0 12:18:59  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	12909  -  Run Bytes Sent By Job
+	22686  -  Run Bytes Received By Job
+	432469  -  Total Bytes Sent By Job
+	423235  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated Assigned
+	   Cpus                 :       0.27       12        12 
+	   Disk (KB)            : 3750000    31457280  31672327 
+	   Gpus                 :       0.52        1         1 "CUDA0"
+	   Memory (MB)          :   14649       65536     65536 
+...

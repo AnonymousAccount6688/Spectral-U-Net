@@ -1,0 +1,27 @@
+2024-03-06 12:30:11,408 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Current SDK version is 0.15.4
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Configure stats pid to 859218
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/.config/wandb/settings
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Loading settings from /afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/wandb/settings
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-03-06 12:30:11,409 INFO    MainThread:859218 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'nnunetv2/run/run_training.py', 'program': '/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py'}
+2024-03-06 12:30:11,410 INFO    MainThread:859218 [wandb_init.py:_log_setup():507] Logging user logs to wandb/wandb/run-20240306_123011-yd27ln35/logs/debug.log
+2024-03-06 12:30:11,410 INFO    MainThread:859218 [wandb_init.py:_log_setup():508] Logging internal logs to wandb/wandb/run-20240306_123011-yd27ln35/logs/debug-internal.log
+2024-03-06 12:30:11,410 INFO    MainThread:859218 [wandb_init.py:init():547] calling init triggers
+2024-03-06 12:30:11,410 INFO    MainThread:859218 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2024-03-06 12:30:11,410 INFO    MainThread:859218 [wandb_init.py:init():596] starting backend
+2024-03-06 12:30:11,411 INFO    MainThread:859218 [wandb_init.py:init():600] setting up manager
+2024-03-06 12:30:11,414 INFO    MainThread:859218 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-03-06 12:30:11,419 INFO    MainThread:859218 [wandb_init.py:init():606] backend started and connected
+2024-03-06 12:30:11,422 INFO    MainThread:859218 [wandb_init.py:init():703] updated telemetry
+2024-03-06 12:30:11,454 INFO    MainThread:859218 [wandb_init.py:init():736] communicating run to backend with 60.0 second timeout
+2024-03-06 12:30:11,859 INFO    MainThread:859218 [wandb_run.py:_on_init():2176] communicating current version
+2024-03-06 12:30:11,975 INFO    MainThread:859218 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.16.4 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-03-06 12:30:11,975 INFO    MainThread:859218 [wandb_init.py:init():787] starting run threads in backend
+2024-03-06 12:30:13,908 INFO    MainThread:859218 [wandb_run.py:_console_start():2155] atexit reg
+2024-03-06 12:30:13,909 INFO    MainThread:859218 [wandb_run.py:_redirect():2010] redirect: SettingsConsole.WRAP_RAW
+2024-03-06 12:30:13,910 INFO    MainThread:859218 [wandb_run.py:_redirect():2075] Wrapping output streams.
+2024-03-06 12:30:13,910 INFO    MainThread:859218 [wandb_run.py:_redirect():2100] Redirects installed.
+2024-03-06 12:30:13,911 INFO    MainThread:859218 [wandb_init.py:init():828] run started, returning control to user process

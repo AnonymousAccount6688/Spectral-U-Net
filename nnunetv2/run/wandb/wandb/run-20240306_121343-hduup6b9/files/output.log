@@ -1,0 +1,22 @@
+<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>
+==============<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>==============
+lr: 0.01
+ds wegihts: [0.50196078 0.25098039 0.1254902  0.0627451  0.03137255 0.01568627
+ 0.00784314 0.00392157]
+loading from : /scratch365/ypeng4/data/result/Dataset203_Liver/LiverTrainer__nnUNetPlans__2d/unknown_my_unet_FusedMBConv_16/fold_0/checkpoint_latest.pth
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/pycharm-community-2022.3.3/plugins/python-ce/helpers/pydev/pydevd.py", line 1496, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/afs/crc.nd.edu/user/y/ypeng4/pycharm-community-2022.3.3/plugins/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 306, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 300, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 227, in run_training
+    maybe_load_checkpoint(nnunet_trainer, continue_training, only_run_validation, pretrained_weights)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 129, in maybe_load_checkpoint
+    nnunet_trainer.load_checkpoint(expected_checkpoint_file)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1218, in load_checkpoint
+    if isinstance(self.logger.my_fantastic_logging['lrs'][0], (list, tuple)):
+IndexError: list index out of range

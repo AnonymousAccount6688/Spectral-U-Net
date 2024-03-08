@@ -1,0 +1,1924 @@
+OrderedDict([('self', <Parameter "self">), ('plans', <Parameter "plans: dict">), ('configuration', <Parameter "configuration: str">), ('fold', <Parameter "fold: int">), ('dataset_json', <Parameter "dataset_json: dict">), ('unpack_dataset', <Parameter "unpack_dataset: bool = True">), ('device', <Parameter "device: torch.device = device(type='cuda')">), ('debug', <Parameter "debug=True">), ('job_id', <Parameter "job_id=None">)])
+Using device: cuda:0
+==========================initial_lr: 0.005===========================
+2023-09-07 01:41:42.215875: I am training on qa-rtx6k-022.crc.nd.edu
+2023-09-07 01:41:42.217790: output folder: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458836_my_unet_FusedMBConv_16/fold_0
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+===============use SpatialAtt + ChannelAtt and My attention layer===============
+model: PVTNetwork_5(
+  (backbone): pvt_v2_b2(
+    (patch_embed1): OverlapPatchEmbed(
+      (proj): Conv2d(3, 64, kernel_size=(7, 7), stride=(4, 4), padding=(3, 3))
+      (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed2): OverlapPatchEmbed(
+      (proj): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed3): OverlapPatchEmbed(
+      (proj): Conv2d(128, 320, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+    )
+    (patch_embed4): OverlapPatchEmbed(
+      (proj): Conv2d(320, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+    (block1): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.007)
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=64, out_features=64, bias=True)
+          (kv): Linear(in_features=64, out_features=128, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=64, out_features=64, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(64, 64, kernel_size=(8, 8), stride=(8, 8))
+          (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.013)
+        (norm2): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=64, out_features=512, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=512, out_features=64, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm1): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+    (block2): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.020)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.027)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.033)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=128, out_features=128, bias=True)
+          (kv): Linear(in_features=128, out_features=256, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=128, out_features=128, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(128, 128, kernel_size=(4, 4), stride=(4, 4))
+          (norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.040)
+        (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=1024, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1024, out_features=128, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm2): LayerNorm((128,), eps=1e-06, elementwise_affine=True)
+    (block3): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.047)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.053)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.060)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.067)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (4): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.073)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (5): Block(
+        (norm1): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=320, out_features=320, bias=True)
+          (kv): Linear(in_features=320, out_features=640, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=320, out_features=320, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+          (sr): Conv2d(320, 320, kernel_size=(2, 2), stride=(2, 2))
+          (norm): LayerNorm((320,), eps=1e-05, elementwise_affine=True)
+        )
+        (drop_path): DropPath(drop_prob=0.080)
+        (norm2): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=320, out_features=1280, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(1280, 1280, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1280)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=1280, out_features=320, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm3): LayerNorm((320,), eps=1e-06, elementwise_affine=True)
+    (block4): ModuleList(
+      (0): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.087)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.093)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (q): Linear(in_features=512, out_features=512, bias=True)
+          (kv): Linear(in_features=512, out_features=1024, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(drop_prob=0.100)
+        (norm2): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (dwconv): DWConv(
+            (dwconv): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2048)
+          )
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm4): LayerNorm((512,), eps=1e-06, elementwise_affine=True)
+  )
+  (Translayer_1): BasicConv2d(
+    (conv): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_2): BasicConv2d(
+    (conv): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_3): BasicConv2d(
+    (conv): Conv2d(320, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (Translayer_4): BasicConv2d(
+    (conv): Conv2d(512, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+  )
+  (attention_1): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_2): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_3): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (attention_4): AttentionLayer(
+    (convs): ModuleList(
+      (0-3): 4 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+  )
+  (seg_outs): ModuleList(
+    (0-3): 4 x Conv2d(32, 2, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (deconv2): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv3): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv4): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (deconv5): ConvTranspose2d(32, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+)
+===============<class 'nnunetv2.training.network.model.dim2.pvt.pvt_5.PVTNetwork_5'>================
+ds wegihts: [0.53333333 0.26666667 0.13333333 0.06666667]
+loading from : /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458836_my_unet_FusedMBConv_16/fold_0/checkpoint_latest.pth
+
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [False, False, False], 'UNet_class_name': 'PlainConvUNet', 'nnUNet_UNet': False, 'my_net_class': 'pvt_5', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True} 
+
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset124_ISIC2018', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [999.0, 1.0, 1.0], 'original_median_shape_after_transp': [1, 256, 256], 'image_reader_writer': 'NaturalImage2DIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 255.0, 'mean': 160.57754516601562, 'median': 164.0, 'min': 0.0, 'percentile_00_5': 29.0, 'percentile_99_5': 253.0, 'std': 42.08180618286133}, '1': {'max': 255.0, 'mean': 111.1130142211914, 'median': 113.0, 'min': 0.0, 'percentile_00_5': 8.0, 'percentile_99_5': 222.0, 'std': 43.864933013916016}, '2': {'max': 255.0, 'mean': 91.45153045654297, 'median': 91.0, 'min': 0.0, 'percentile_00_5': 4.0, 'percentile_99_5': 209.0, 'std': 43.73163604736328}}} 
+
+2023-09-07 01:41:51.165101: unpacking dataset...
+2023-09-07 01:42:07.053756: unpacking done...
+2023-09-07 01:42:07.055322: do_dummy_2d_data_aug: False
+2023-09-07 01:42:07.074107: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 01:42:07.075531: The split file contains 1 splits.
+2023-09-07 01:42:07.076159: Desired fold for training: 0
+2023-09-07 01:42:07.076575: This split has 1886 training and 808 validation cases.
+==================batch size: 49==================
+2023-09-07 01:42:07.112250: Unable to plot network architecture:
+2023-09-07 01:42:07.112677: No module named 'hiddenlayer'
+PVTNetwork_5
+===================debug: False===================
+2023-09-07 01:42:09.195947: 
+2023-09-07 01:42:09.196745: Epoch 270
+2023-09-07 01:42:09.197446: Current learning rate: backbone 0.00125893, others 0.00125893
+2023-09-07 01:42:09.198003: start training, 250
+==========num_iterations_per_epoch: 250===========
+using pin_memory on device 0
+2023-09-07 01:43:25.536626: finished training epoch 270
+2023-09-07 01:43:25.575251: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 01:43:25.576860: The split file contains 1 splits.
+2023-09-07 01:43:25.577594: Desired fold for training: 0
+2023-09-07 01:43:25.578126: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 01:48:30.329651: dsc: 91.14%
+2023-09-07 01:48:30.330672: miou: 83.72%
+2023-09-07 01:48:30.331300: acc: 95.49%, sen: 92.09%, spe: 96.64%
+2023-09-07 01:48:30.332327: current best miou: 0.8371531207106141 at epoch: 270, (270, 0.8371531207106141, 0.9113591145704848)
+2023-09-07 01:48:30.332858: current best dsc: 0.9113591145704848 at epoch: 270, (270, 0.8371531207106141, 0.9113591145704848)
+2023-09-07 01:48:31.818954: finished real validation
+using pin_memory on device 0
+2023-09-07 01:48:36.780256: train_loss -1.4552
+2023-09-07 01:48:36.781390: val_loss -0.9268
+2023-09-07 01:48:36.782898: Pseudo dice [0.9134]
+2023-09-07 01:48:36.783643: Epoch time: 387.59 s
+2023-09-07 01:48:38.010241: 
+2023-09-07 01:48:38.011328: Epoch 271
+2023-09-07 01:48:38.011993: Current learning rate: backbone 0.00122109, others 0.00122109
+2023-09-07 01:48:38.013351: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 01:49:37.035169: finished training epoch 271
+2023-09-07 01:49:37.068178: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 01:49:37.070225: The split file contains 1 splits.
+2023-09-07 01:49:37.070968: Desired fold for training: 0
+2023-09-07 01:49:37.071571: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 01:54:49.649939: dsc: 91.10%
+2023-09-07 01:54:49.651116: miou: 83.65%
+2023-09-07 01:54:49.651672: acc: 95.48%, sen: 91.88%, spe: 96.69%
+2023-09-07 01:54:49.652701: current best miou: 0.8371531207106141 at epoch: 270, (270, 0.8371531207106141, 0.9113591145704848)
+2023-09-07 01:54:49.653442: current best dsc: 0.9113591145704848 at epoch: 270, (270, 0.8371531207106141, 0.9113591145704848)
+2023-09-07 01:54:49.653926: finished real validation
+2023-09-07 01:54:53.833834: train_loss -1.4555
+2023-09-07 01:54:53.834918: val_loss -0.884
+2023-09-07 01:54:53.835815: Pseudo dice [0.9078]
+2023-09-07 01:54:53.836481: Epoch time: 375.82 s
+2023-09-07 01:54:54.947416: 
+2023-09-07 01:54:54.948549: Epoch 272
+2023-09-07 01:54:54.949325: Current learning rate: backbone 0.00118313, others 0.00118313
+2023-09-07 01:54:54.950535: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 01:55:54.085515: finished training epoch 272
+2023-09-07 01:55:54.118539: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 01:55:54.120346: The split file contains 1 splits.
+2023-09-07 01:55:54.121263: Desired fold for training: 0
+2023-09-07 01:55:54.122008: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:00:58.085793: dsc: 91.23%
+2023-09-07 02:00:58.086947: miou: 83.88%
+2023-09-07 02:00:58.087539: acc: 95.57%, sen: 91.70%, spe: 96.87%
+2023-09-07 02:00:58.088420: current best miou: 0.8388021711744699 at epoch: 272, (272, 0.8388021711744699, 0.9123354152216545)
+2023-09-07 02:00:58.088994: current best dsc: 0.9123354152216545 at epoch: 272, (272, 0.8388021711744699, 0.9123354152216545)
+2023-09-07 02:00:59.659853: finished real validation
+2023-09-07 02:01:03.838399: train_loss -1.4549
+2023-09-07 02:01:03.839660: val_loss -0.9498
+2023-09-07 02:01:03.840803: Pseudo dice [0.9159]
+2023-09-07 02:01:03.841570: Epoch time: 368.89 s
+2023-09-07 02:01:04.935626: 
+2023-09-07 02:01:04.936907: Epoch 273
+2023-09-07 02:01:04.937616: Current learning rate: backbone 0.00114503, others 0.00114503
+2023-09-07 02:01:04.938723: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:02:03.972195: finished training epoch 273
+2023-09-07 02:02:04.010987: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:02:04.012911: The split file contains 1 splits.
+2023-09-07 02:02:04.013666: Desired fold for training: 0
+2023-09-07 02:02:04.014296: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:07:19.845351: dsc: 91.24%
+2023-09-07 02:07:19.846472: miou: 83.89%
+2023-09-07 02:07:19.847164: acc: 95.56%, sen: 91.81%, spe: 96.83%
+2023-09-07 02:07:19.848100: current best miou: 0.8388717868429103 at epoch: 273, (273, 0.8388717868429103, 0.9123765918265978)
+2023-09-07 02:07:19.848946: current best dsc: 0.9123765918265978 at epoch: 273, (273, 0.8388717868429103, 0.9123765918265978)
+2023-09-07 02:07:21.394858: finished real validation
+2023-09-07 02:07:25.579721: train_loss -1.4559
+2023-09-07 02:07:25.580915: val_loss -0.8394
+2023-09-07 02:07:25.583039: Pseudo dice [0.9067]
+2023-09-07 02:07:25.584471: Epoch time: 380.65 s
+2023-09-07 02:07:26.724226: 
+2023-09-07 02:07:26.725305: Epoch 274
+2023-09-07 02:07:26.726039: Current learning rate: backbone 0.00110679, others 0.00110679
+2023-09-07 02:07:26.727199: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:08:25.818238: finished training epoch 274
+2023-09-07 02:08:25.846766: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:08:25.848126: The split file contains 1 splits.
+2023-09-07 02:08:25.849340: Desired fold for training: 0
+2023-09-07 02:08:25.850417: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:13:40.376903: dsc: 91.25%
+2023-09-07 02:13:40.378015: miou: 83.91%
+2023-09-07 02:13:40.378602: acc: 95.56%, sen: 92.05%, spe: 96.74%
+2023-09-07 02:13:40.379489: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:13:40.380166: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:13:41.924986: finished real validation
+2023-09-07 02:13:46.117942: train_loss -1.4553
+2023-09-07 02:13:46.119026: val_loss -0.9059
+2023-09-07 02:13:46.120108: Pseudo dice [0.9124]
+2023-09-07 02:13:46.121424: Epoch time: 379.39 s
+2023-09-07 02:13:47.207489: 
+2023-09-07 02:13:47.208371: Epoch 275
+2023-09-07 02:13:47.209028: Current learning rate: backbone 0.00106841, others 0.00106841
+2023-09-07 02:13:47.210504: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:14:46.154385: finished training epoch 275
+2023-09-07 02:14:46.196447: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:14:46.198290: The split file contains 1 splits.
+2023-09-07 02:14:46.199054: Desired fold for training: 0
+2023-09-07 02:14:46.199735: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:19:57.821241: dsc: 91.22%
+2023-09-07 02:19:57.822391: miou: 83.86%
+2023-09-07 02:19:57.823216: acc: 95.56%, sen: 91.81%, spe: 96.82%
+2023-09-07 02:19:57.824284: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:19:57.825362: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:19:57.825992: finished real validation
+2023-09-07 02:20:02.018955: train_loss -1.4554
+2023-09-07 02:20:02.020140: val_loss -0.8976
+2023-09-07 02:20:02.021124: Pseudo dice [0.9095]
+2023-09-07 02:20:02.021843: Epoch time: 374.81 s
+2023-09-07 02:20:03.108164: 
+2023-09-07 02:20:03.109206: Epoch 276
+2023-09-07 02:20:03.109908: Current learning rate: backbone 0.00102987, others 0.00102987
+2023-09-07 02:20:03.110972: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:21:02.181393: finished training epoch 276
+2023-09-07 02:21:02.210188: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:21:02.211682: The split file contains 1 splits.
+2023-09-07 02:21:02.212747: Desired fold for training: 0
+2023-09-07 02:21:02.213408: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:26:30.790759: dsc: 91.15%
+2023-09-07 02:26:30.792194: miou: 83.74%
+2023-09-07 02:26:30.792863: acc: 95.51%, sen: 91.88%, spe: 96.74%
+2023-09-07 02:26:30.794367: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:26:30.795296: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:26:30.796240: finished real validation
+2023-09-07 02:26:34.996903: train_loss -1.4559
+2023-09-07 02:26:34.998433: val_loss -0.8822
+2023-09-07 02:26:34.999532: Pseudo dice [0.9116]
+2023-09-07 02:26:35.000367: Epoch time: 391.89 s
+2023-09-07 02:26:36.098349: 
+2023-09-07 02:26:36.099470: Epoch 277
+2023-09-07 02:26:36.100178: Current learning rate: backbone 0.00099116, others 0.00099116
+2023-09-07 02:26:36.101836: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:27:35.111320: finished training epoch 277
+2023-09-07 02:27:35.140928: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:27:35.144162: The split file contains 1 splits.
+2023-09-07 02:27:35.145413: Desired fold for training: 0
+2023-09-07 02:27:35.146649: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:32:44.781006: dsc: 91.20%
+2023-09-07 02:32:44.782158: miou: 83.83%
+2023-09-07 02:32:44.782933: acc: 95.55%, sen: 91.72%, spe: 96.84%
+2023-09-07 02:32:44.784024: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:32:44.784744: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:32:44.785439: finished real validation
+2023-09-07 02:32:48.972307: train_loss -1.4563
+2023-09-07 02:32:48.973457: val_loss -0.9084
+2023-09-07 02:32:48.974437: Pseudo dice [0.9135]
+2023-09-07 02:32:48.975240: Epoch time: 372.88 s
+2023-09-07 02:32:50.073209: 
+2023-09-07 02:32:50.074218: Epoch 278
+2023-09-07 02:32:50.075048: Current learning rate: backbone 0.00095229, others 0.00095229
+2023-09-07 02:32:50.076248: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:33:49.132037: finished training epoch 278
+2023-09-07 02:33:49.170437: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:33:49.172125: The split file contains 1 splits.
+2023-09-07 02:33:49.172839: Desired fold for training: 0
+2023-09-07 02:33:49.173492: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:39:04.449469: dsc: 91.25%
+2023-09-07 02:39:04.450437: miou: 83.90%
+2023-09-07 02:39:04.451045: acc: 95.58%, sen: 91.67%, spe: 96.89%
+2023-09-07 02:39:04.452282: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:39:04.452971: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:39:04.453691: finished real validation
+2023-09-07 02:39:08.655858: train_loss -1.4558
+2023-09-07 02:39:08.656888: val_loss -0.9415
+2023-09-07 02:39:08.657811: Pseudo dice [0.917]
+2023-09-07 02:39:08.658570: Epoch time: 378.58 s
+2023-09-07 02:39:09.814589: 
+2023-09-07 02:39:09.815428: Epoch 279
+2023-09-07 02:39:09.816207: Current learning rate: backbone 0.00091325, others 0.00091325
+2023-09-07 02:39:09.817486: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:40:08.809635: finished training epoch 279
+2023-09-07 02:40:08.869102: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:40:08.870902: The split file contains 1 splits.
+2023-09-07 02:40:08.871609: Desired fold for training: 0
+2023-09-07 02:40:08.872245: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:45:22.483012: dsc: 91.19%
+2023-09-07 02:45:22.484144: miou: 83.81%
+2023-09-07 02:45:22.484755: acc: 95.56%, sen: 91.51%, spe: 96.91%
+2023-09-07 02:45:22.485610: current best miou: 0.8390771193949782 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:45:22.486310: current best dsc: 0.9124980247386458 at epoch: 274, (274, 0.8390771193949782, 0.9124980247386458)
+2023-09-07 02:45:22.486840: finished real validation
+2023-09-07 02:45:26.672091: train_loss -1.4563
+2023-09-07 02:45:26.673211: val_loss -0.9116
+2023-09-07 02:45:26.674076: Pseudo dice [0.9153]
+2023-09-07 02:45:26.674861: Epoch time: 376.86 s
+2023-09-07 02:45:29.642331: 
+2023-09-07 02:45:29.643255: Epoch 280
+2023-09-07 02:45:29.644328: Current learning rate: backbone 0.00087401, others 0.00087401
+2023-09-07 02:45:29.646180: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:46:28.832329: finished training epoch 280
+2023-09-07 02:46:28.880218: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:46:28.881837: The split file contains 1 splits.
+2023-09-07 02:46:28.882601: Desired fold for training: 0
+2023-09-07 02:46:28.883281: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:51:41.571050: dsc: 91.28%
+2023-09-07 02:51:41.572211: miou: 83.96%
+2023-09-07 02:51:41.572869: acc: 95.58%, sen: 91.93%, spe: 96.81%
+2023-09-07 02:51:41.573760: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 02:51:41.574448: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 02:51:43.252133: finished real validation
+2023-09-07 02:51:47.460003: train_loss -1.4562
+2023-09-07 02:51:47.461154: val_loss -0.9221
+2023-09-07 02:51:47.462073: Pseudo dice [0.9141]
+2023-09-07 02:51:47.462850: Epoch time: 377.82 s
+2023-09-07 02:51:48.607277: 
+2023-09-07 02:51:48.608370: Epoch 281
+2023-09-07 02:51:48.609233: Current learning rate: backbone 0.00083458, others 0.00083458
+2023-09-07 02:51:48.610389: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:52:47.817880: finished training epoch 281
+2023-09-07 02:52:47.844419: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:52:47.845979: The split file contains 1 splits.
+2023-09-07 02:52:47.846674: Desired fold for training: 0
+2023-09-07 02:52:47.847340: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 02:58:01.278431: dsc: 91.15%
+2023-09-07 02:58:01.279562: miou: 83.74%
+2023-09-07 02:58:01.280216: acc: 95.52%, sen: 91.71%, spe: 96.81%
+2023-09-07 02:58:01.281138: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 02:58:01.281789: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 02:58:01.282353: finished real validation
+2023-09-07 02:58:05.477964: train_loss -1.4559
+2023-09-07 02:58:05.479245: val_loss -0.9237
+2023-09-07 02:58:05.480246: Pseudo dice [0.9145]
+2023-09-07 02:58:05.481025: Epoch time: 376.87 s
+2023-09-07 02:58:06.569342: 
+2023-09-07 02:58:06.570544: Epoch 282
+2023-09-07 02:58:06.571314: Current learning rate: backbone 0.00079494, others 0.00079494
+2023-09-07 02:58:06.572757: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 02:59:05.758171: finished training epoch 282
+2023-09-07 02:59:05.797472: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 02:59:05.799906: The split file contains 1 splits.
+2023-09-07 02:59:05.801080: Desired fold for training: 0
+2023-09-07 02:59:05.802076: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:04:12.386118: dsc: 91.18%
+2023-09-07 03:04:12.387425: miou: 83.79%
+2023-09-07 03:04:12.388142: acc: 95.53%, sen: 91.80%, spe: 96.79%
+2023-09-07 03:04:12.389188: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:04:12.389858: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:04:12.390444: finished real validation
+2023-09-07 03:04:16.602718: train_loss -1.4567
+2023-09-07 03:04:16.603954: val_loss -0.9228
+2023-09-07 03:04:16.604900: Pseudo dice [0.9137]
+2023-09-07 03:04:16.605644: Epoch time: 370.03 s
+2023-09-07 03:04:17.712779: 
+2023-09-07 03:04:17.713946: Epoch 283
+2023-09-07 03:04:17.714770: Current learning rate: backbone 0.00075508, others 0.00075508
+2023-09-07 03:04:17.715857: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:05:16.870764: finished training epoch 283
+2023-09-07 03:05:16.902644: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:05:16.903993: The split file contains 1 splits.
+2023-09-07 03:05:16.904747: Desired fold for training: 0
+2023-09-07 03:05:16.905553: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:11:28.885989: dsc: 91.24%
+2023-09-07 03:11:28.887271: miou: 83.88%
+2023-09-07 03:11:28.887975: acc: 95.57%, sen: 91.71%, spe: 96.87%
+2023-09-07 03:11:28.888934: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:11:28.889839: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:11:28.890625: finished real validation
+2023-09-07 03:11:33.092560: train_loss -1.4575
+2023-09-07 03:11:33.093787: val_loss -0.8829
+2023-09-07 03:11:33.094779: Pseudo dice [0.9094]
+2023-09-07 03:11:33.095565: Epoch time: 435.38 s
+2023-09-07 03:11:34.235989: 
+2023-09-07 03:11:34.236989: Epoch 284
+2023-09-07 03:11:34.237757: Current learning rate: backbone 0.00071499, others 0.00071499
+2023-09-07 03:11:34.238855: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:12:33.449974: finished training epoch 284
+2023-09-07 03:12:33.506637: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:12:33.508537: The split file contains 1 splits.
+2023-09-07 03:12:33.509337: Desired fold for training: 0
+2023-09-07 03:12:33.510045: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:17:52.389071: dsc: 91.25%
+2023-09-07 03:17:52.390385: miou: 83.91%
+2023-09-07 03:17:52.391134: acc: 95.58%, sen: 91.63%, spe: 96.91%
+2023-09-07 03:17:52.392202: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:17:52.392892: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:17:52.393619: finished real validation
+2023-09-07 03:17:56.606052: train_loss -1.4567
+2023-09-07 03:17:56.607408: val_loss -0.9273
+2023-09-07 03:17:56.608542: Pseudo dice [0.9153]
+2023-09-07 03:17:56.609282: Epoch time: 382.37 s
+2023-09-07 03:17:57.712389: 
+2023-09-07 03:17:57.713609: Epoch 285
+2023-09-07 03:17:57.714419: Current learning rate: backbone 0.00067464, others 0.00067464
+2023-09-07 03:17:57.715664: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:18:57.020347: finished training epoch 285
+2023-09-07 03:18:57.075552: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:18:57.079926: The split file contains 1 splits.
+2023-09-07 03:18:57.080799: Desired fold for training: 0
+2023-09-07 03:18:57.081518: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:24:10.989607: dsc: 91.20%
+2023-09-07 03:24:10.990943: miou: 83.82%
+2023-09-07 03:24:10.991693: acc: 95.54%, sen: 91.85%, spe: 96.78%
+2023-09-07 03:24:10.992711: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:24:10.993429: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:24:10.994066: finished real validation
+2023-09-07 03:24:15.209421: train_loss -1.4566
+2023-09-07 03:24:15.210645: val_loss -0.9029
+2023-09-07 03:24:15.211607: Pseudo dice [0.9143]
+2023-09-07 03:24:15.212362: Epoch time: 377.5 s
+2023-09-07 03:24:16.329056: 
+2023-09-07 03:24:16.330356: Epoch 286
+2023-09-07 03:24:16.331136: Current learning rate: backbone 0.00063402, others 0.00063402
+2023-09-07 03:24:16.332248: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:25:15.741510: finished training epoch 286
+2023-09-07 03:25:15.795271: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:25:15.812137: The split file contains 1 splits.
+2023-09-07 03:25:15.812909: Desired fold for training: 0
+2023-09-07 03:25:15.813606: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:30:21.756261: dsc: 91.27%
+2023-09-07 03:30:21.757453: miou: 83.94%
+2023-09-07 03:30:21.758216: acc: 95.58%, sen: 91.78%, spe: 96.86%
+2023-09-07 03:30:21.759264: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:30:21.759957: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:30:21.760616: finished real validation
+2023-09-07 03:30:25.964986: train_loss -1.4566
+2023-09-07 03:30:25.966315: val_loss -0.9181
+2023-09-07 03:30:25.967340: Pseudo dice [0.9146]
+2023-09-07 03:30:25.968198: Epoch time: 369.64 s
+2023-09-07 03:30:27.080916: 
+2023-09-07 03:30:27.082319: Epoch 287
+2023-09-07 03:30:27.083417: Current learning rate: backbone 0.00059312, others 0.00059312
+2023-09-07 03:30:27.084553: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:31:26.254053: finished training epoch 287
+2023-09-07 03:31:26.285158: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:31:26.286968: The split file contains 1 splits.
+2023-09-07 03:31:26.287697: Desired fold for training: 0
+2023-09-07 03:31:26.288374: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:38:17.952647: dsc: 91.25%
+2023-09-07 03:38:17.953898: miou: 83.90%
+2023-09-07 03:38:17.954661: acc: 95.58%, sen: 91.60%, spe: 96.92%
+2023-09-07 03:38:17.955791: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:38:17.956552: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:38:17.957186: finished real validation
+2023-09-07 03:38:22.148474: train_loss -1.4566
+2023-09-07 03:38:22.149753: val_loss -0.8935
+2023-09-07 03:38:22.150807: Pseudo dice [0.9144]
+2023-09-07 03:38:22.151659: Epoch time: 475.07 s
+2023-09-07 03:38:23.254956: 
+2023-09-07 03:38:23.256323: Epoch 288
+2023-09-07 03:38:23.257371: Current learning rate: backbone 0.00055189, others 0.00055189
+2023-09-07 03:38:23.259010: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:39:22.627745: finished training epoch 288
+2023-09-07 03:39:22.669260: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:39:22.671125: The split file contains 1 splits.
+2023-09-07 03:39:22.671931: Desired fold for training: 0
+2023-09-07 03:39:22.672675: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:44:28.459500: dsc: 91.24%
+2023-09-07 03:44:28.460895: miou: 83.89%
+2023-09-07 03:44:28.461630: acc: 95.58%, sen: 91.53%, spe: 96.94%
+2023-09-07 03:44:28.462604: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:44:28.463559: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:44:28.464422: finished real validation
+2023-09-07 03:44:32.663992: train_loss -1.4567
+2023-09-07 03:44:32.665571: val_loss -0.9173
+2023-09-07 03:44:32.666813: Pseudo dice [0.9141]
+2023-09-07 03:44:32.667666: Epoch time: 369.41 s
+2023-09-07 03:44:33.757005: 
+2023-09-07 03:44:33.758330: Epoch 289
+2023-09-07 03:44:33.759153: Current learning rate: backbone 0.00051032, others 0.00051032
+2023-09-07 03:44:33.760847: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:45:32.830859: finished training epoch 289
+2023-09-07 03:45:32.881707: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:45:32.883687: The split file contains 1 splits.
+2023-09-07 03:45:32.887442: Desired fold for training: 0
+2023-09-07 03:45:32.891384: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:51:37.878147: dsc: 91.25%
+2023-09-07 03:51:37.879334: miou: 83.91%
+2023-09-07 03:51:37.880142: acc: 95.57%, sen: 91.76%, spe: 96.86%
+2023-09-07 03:51:37.881243: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:51:37.881969: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:51:37.882664: finished real validation
+2023-09-07 03:51:42.087598: train_loss -1.4571
+2023-09-07 03:51:42.089309: val_loss -0.8803
+2023-09-07 03:51:42.090332: Pseudo dice [0.9095]
+2023-09-07 03:51:42.091479: Epoch time: 428.33 s
+2023-09-07 03:51:44.707057: 
+2023-09-07 03:51:44.708031: Epoch 290
+2023-09-07 03:51:44.708776: Current learning rate: backbone 0.00046837, others 0.00046837
+2023-09-07 03:51:44.709820: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:52:43.964792: finished training epoch 290
+2023-09-07 03:52:43.993265: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:52:43.994803: The split file contains 1 splits.
+2023-09-07 03:52:43.995558: Desired fold for training: 0
+2023-09-07 03:52:43.996243: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 03:58:05.390064: dsc: 91.18%
+2023-09-07 03:58:05.391314: miou: 83.79%
+2023-09-07 03:58:05.392118: acc: 95.53%, sen: 91.91%, spe: 96.74%
+2023-09-07 03:58:05.393377: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:58:05.394127: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 03:58:05.394795: finished real validation
+2023-09-07 03:58:09.600219: train_loss -1.4572
+2023-09-07 03:58:09.601556: val_loss -0.9274
+2023-09-07 03:58:09.602679: Pseudo dice [0.9144]
+2023-09-07 03:58:09.603624: Epoch time: 384.89 s
+2023-09-07 03:58:10.846740: 
+2023-09-07 03:58:10.847922: Epoch 291
+2023-09-07 03:58:10.848784: Current learning rate: backbone 0.000426, others 0.000426
+2023-09-07 03:58:10.849983: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 03:59:10.298304: finished training epoch 291
+2023-09-07 03:59:10.337906: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 03:59:10.339921: The split file contains 1 splits.
+2023-09-07 03:59:10.340739: Desired fold for training: 0
+2023-09-07 03:59:10.341489: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:04:25.353317: dsc: 91.24%
+2023-09-07 04:04:25.354504: miou: 83.89%
+2023-09-07 04:04:25.355255: acc: 95.57%, sen: 91.80%, spe: 96.83%
+2023-09-07 04:04:25.356324: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:04:25.357051: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:04:25.357699: finished real validation
+2023-09-07 04:04:29.557296: train_loss -1.4574
+2023-09-07 04:04:29.558684: val_loss -0.9316
+2023-09-07 04:04:29.559812: Pseudo dice [0.9181]
+2023-09-07 04:04:29.560719: Epoch time: 378.71 s
+2023-09-07 04:04:30.671859: 
+2023-09-07 04:04:30.672994: Epoch 292
+2023-09-07 04:04:30.673880: Current learning rate: backbone 0.00038315, others 0.00038315
+2023-09-07 04:04:30.675558: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:05:29.933682: finished training epoch 292
+2023-09-07 04:05:29.972275: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:05:29.975011: The split file contains 1 splits.
+2023-09-07 04:05:29.976257: Desired fold for training: 0
+2023-09-07 04:05:29.977338: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:10:41.931337: dsc: 91.19%
+2023-09-07 04:10:41.932671: miou: 83.81%
+2023-09-07 04:10:41.933489: acc: 95.55%, sen: 91.64%, spe: 96.86%
+2023-09-07 04:10:41.934903: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:10:41.935659: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:10:41.936351: finished real validation
+2023-09-07 04:10:46.139304: train_loss -1.4572
+2023-09-07 04:10:46.140703: val_loss -0.9001
+2023-09-07 04:10:46.141855: Pseudo dice [0.9122]
+2023-09-07 04:10:46.143035: Epoch time: 375.47 s
+2023-09-07 04:10:47.285657: 
+2023-09-07 04:10:47.286872: Epoch 293
+2023-09-07 04:10:47.287704: Current learning rate: backbone 0.00033977, others 0.00033977
+2023-09-07 04:10:47.288996: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:11:46.616431: finished training epoch 293
+2023-09-07 04:11:46.682354: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:11:46.690913: The split file contains 1 splits.
+2023-09-07 04:11:46.692415: Desired fold for training: 0
+2023-09-07 04:11:46.693223: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:17:10.765672: dsc: 91.25%
+2023-09-07 04:17:10.766997: miou: 83.90%
+2023-09-07 04:17:10.768105: acc: 95.57%, sen: 91.74%, spe: 96.86%
+2023-09-07 04:17:10.769319: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:17:10.770608: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:17:10.771944: finished real validation
+2023-09-07 04:17:14.975540: train_loss -1.4574
+2023-09-07 04:17:14.976908: val_loss -0.9298
+2023-09-07 04:17:14.977925: Pseudo dice [0.9156]
+2023-09-07 04:17:14.978785: Epoch time: 387.69 s
+2023-09-07 04:17:16.092609: 
+2023-09-07 04:17:16.093894: Epoch 294
+2023-09-07 04:17:16.095124: Current learning rate: backbone 0.00029575, others 0.00029575
+2023-09-07 04:17:16.096759: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:18:15.531456: finished training epoch 294
+2023-09-07 04:18:15.587417: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:18:15.589390: The split file contains 1 splits.
+2023-09-07 04:18:15.590294: Desired fold for training: 0
+2023-09-07 04:18:15.591093: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:23:27.460760: dsc: 91.19%
+2023-09-07 04:23:27.461967: miou: 83.80%
+2023-09-07 04:23:27.462798: acc: 95.53%, sen: 92.03%, spe: 96.70%
+2023-09-07 04:23:27.464074: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:23:27.464840: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:23:27.465723: finished real validation
+2023-09-07 04:23:31.670839: train_loss -1.458
+2023-09-07 04:23:31.672189: val_loss -0.9063
+2023-09-07 04:23:31.673297: Pseudo dice [0.9132]
+2023-09-07 04:23:31.674207: Epoch time: 375.58 s
+2023-09-07 04:23:32.782092: 
+2023-09-07 04:23:32.783423: Epoch 295
+2023-09-07 04:23:32.784326: Current learning rate: backbone 0.00025099, others 0.00025099
+2023-09-07 04:23:32.785590: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:24:31.905356: finished training epoch 295
+2023-09-07 04:24:31.963965: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:24:31.965721: The split file contains 1 splits.
+2023-09-07 04:24:31.966478: Desired fold for training: 0
+2023-09-07 04:24:31.967274: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:30:41.269906: dsc: 91.22%
+2023-09-07 04:30:41.271358: miou: 83.86%
+2023-09-07 04:30:41.272198: acc: 95.57%, sen: 91.63%, spe: 96.89%
+2023-09-07 04:30:41.273281: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:30:41.274039: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:30:41.274757: finished real validation
+2023-09-07 04:30:45.477050: train_loss -1.4577
+2023-09-07 04:30:45.478411: val_loss -0.8931
+2023-09-07 04:30:45.479529: Pseudo dice [0.9126]
+2023-09-07 04:30:45.480376: Epoch time: 432.7 s
+2023-09-07 04:30:46.605003: 
+2023-09-07 04:30:46.606376: Epoch 296
+2023-09-07 04:30:46.607252: Current learning rate: backbone 0.00020533, others 0.00020533
+2023-09-07 04:30:46.608470: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:31:45.811097: finished training epoch 296
+2023-09-07 04:31:45.854674: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:31:45.856723: The split file contains 1 splits.
+2023-09-07 04:31:45.857596: Desired fold for training: 0
+2023-09-07 04:31:45.858362: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:37:13.396880: dsc: 91.27%
+2023-09-07 04:37:13.398133: miou: 83.95%
+2023-09-07 04:37:13.398922: acc: 95.60%, sen: 91.49%, spe: 96.98%
+2023-09-07 04:37:13.399951: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:37:13.400699: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:37:13.401383: finished real validation
+2023-09-07 04:37:17.603057: train_loss -1.4575
+2023-09-07 04:37:17.604560: val_loss -0.8917
+2023-09-07 04:37:17.605637: Pseudo dice [0.9138]
+2023-09-07 04:37:17.606506: Epoch time: 391.0 s
+2023-09-07 04:37:18.723966: 
+2023-09-07 04:37:18.725466: Epoch 297
+2023-09-07 04:37:18.726355: Current learning rate: backbone 0.00015849, others 0.00015849
+2023-09-07 04:37:18.727646: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:38:18.055518: finished training epoch 297
+2023-09-07 04:38:18.087484: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:38:18.089477: The split file contains 1 splits.
+2023-09-07 04:38:18.090361: Desired fold for training: 0
+2023-09-07 04:38:18.091109: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:43:42.380195: dsc: 91.16%
+2023-09-07 04:43:42.381777: miou: 83.76%
+2023-09-07 04:43:42.382699: acc: 95.53%, sen: 91.60%, spe: 96.86%
+2023-09-07 04:43:42.384192: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:43:42.384980: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:43:42.385906: finished real validation
+2023-09-07 04:43:46.598731: train_loss -1.4576
+2023-09-07 04:43:46.600256: val_loss -0.929
+2023-09-07 04:43:46.601564: Pseudo dice [0.9177]
+2023-09-07 04:43:46.602718: Epoch time: 387.88 s
+2023-09-07 04:43:46.603567: Yayy! New best EMA pseudo Dice: 0.914
+2023-09-07 04:43:49.418158: 
+2023-09-07 04:43:49.419379: Epoch 298
+2023-09-07 04:43:49.420251: Current learning rate: backbone 0.00011003, others 0.00011003
+2023-09-07 04:43:49.421474: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:44:48.827613: finished training epoch 298
+2023-09-07 04:44:48.861203: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:44:48.863337: The split file contains 1 splits.
+2023-09-07 04:44:48.864251: Desired fold for training: 0
+2023-09-07 04:44:48.865038: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:49:59.262540: dsc: 91.19%
+2023-09-07 04:49:59.264163: miou: 83.80%
+2023-09-07 04:49:59.265028: acc: 95.55%, sen: 91.59%, spe: 96.88%
+2023-09-07 04:49:59.266106: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:49:59.266874: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:49:59.267605: finished real validation
+2023-09-07 04:50:03.488601: train_loss -1.4579
+2023-09-07 04:50:03.489927: val_loss -0.8842
+2023-09-07 04:50:03.491066: Pseudo dice [0.9132]
+2023-09-07 04:50:03.491916: Epoch time: 374.07 s
+2023-09-07 04:50:04.589844: 
+2023-09-07 04:50:04.591303: Epoch 299
+2023-09-07 04:50:04.592284: Current learning rate: backbone 5.896e-05, others 5.896e-05
+2023-09-07 04:50:04.593500: start training, 250
+==========num_iterations_per_epoch: 250===========
+2023-09-07 04:51:03.960866: finished training epoch 299
+2023-09-07 04:51:04.004395: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:51:04.006246: The split file contains 1 splits.
+2023-09-07 04:51:04.007085: Desired fold for training: 0
+2023-09-07 04:51:04.007798: This split has 1886 training and 808 validation cases.
+start computing score....
+2023-09-07 04:56:17.240719: dsc: 91.23%
+2023-09-07 04:56:17.242029: miou: 83.87%
+2023-09-07 04:56:17.242778: acc: 95.57%, sen: 91.64%, spe: 96.89%
+2023-09-07 04:56:17.243802: current best miou: 0.83958140257293 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:56:17.244576: current best dsc: 0.9127961409031965 at epoch: 280, (280, 0.83958140257293, 0.9127961409031965)
+2023-09-07 04:56:17.245298: finished real validation
+2023-09-07 04:56:21.446875: train_loss -1.4578
+2023-09-07 04:56:21.448262: val_loss -0.8831
+2023-09-07 04:56:21.449330: Pseudo dice [0.9128]
+2023-09-07 04:56:21.450184: Epoch time: 376.86 s
+2023-09-07 04:56:24.131939: Training done.
+2023-09-07 04:56:24.204022: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset124_ISIC2018/splits_final.json
+2023-09-07 04:56:24.205897: The split file contains 1 splits.
+2023-09-07 04:56:24.206846: Desired fold for training: 0
+2023-09-07 04:56:24.207588: This split has 1886 training and 808 validation cases.
+2023-09-07 04:56:24.228603: predicting val_0
+2023-09-07 04:56:24.405335: predicting val_1
+2023-09-07 04:56:24.556372: predicting val_10
+2023-09-07 04:56:24.708134: predicting val_100
+2023-09-07 04:56:24.865862: predicting val_101
+2023-09-07 04:56:25.029600: predicting val_102
+2023-09-07 04:56:25.203291: predicting val_103
+2023-09-07 04:56:25.359848: predicting val_104
+2023-09-07 04:56:25.511941: predicting val_105
+2023-09-07 04:56:25.667799: predicting val_106
+2023-09-07 04:56:25.815822: predicting val_107
+2023-09-07 04:56:25.972430: predicting val_108
+2023-09-07 04:56:26.118991: predicting val_109
+2023-09-07 04:56:26.274179: predicting val_11
+2023-09-07 04:56:26.501086: predicting val_110
+2023-09-07 04:56:26.650738: predicting val_111
+2023-09-07 04:56:26.796178: predicting val_112
+2023-09-07 04:56:26.945132: predicting val_113
+2023-09-07 04:56:27.097075: predicting val_114
+2023-09-07 04:56:27.240855: predicting val_115
+2023-09-07 04:56:27.379287: predicting val_116
+2023-09-07 04:56:27.522531: predicting val_117
+2023-09-07 04:56:27.668895: predicting val_118
+2023-09-07 04:56:27.819064: predicting val_119
+2023-09-07 04:56:37.637218: predicting val_12
+2023-09-07 04:56:37.801730: predicting val_120
+2023-09-07 04:56:37.967657: predicting val_121
+2023-09-07 04:56:38.139402: predicting val_122
+2023-09-07 04:56:38.289279: predicting val_123
+2023-09-07 04:56:38.429574: predicting val_124
+2023-09-07 04:56:38.568079: predicting val_125
+2023-09-07 04:56:38.710421: predicting val_126
+2023-09-07 04:56:38.853913: predicting val_127
+2023-09-07 04:56:38.993738: predicting val_128
+2023-09-07 04:56:39.132087: predicting val_129
+2023-09-07 04:56:39.270075: predicting val_13
+2023-09-07 04:56:39.414202: predicting val_130
+2023-09-07 04:56:39.552561: predicting val_131
+2023-09-07 04:56:39.691172: predicting val_132
+2023-09-07 04:56:39.831613: predicting val_133
+2023-09-07 04:56:39.970576: predicting val_134
+2023-09-07 04:56:40.111973: predicting val_135
+2023-09-07 04:56:40.253554: predicting val_136
+2023-09-07 04:56:40.393362: predicting val_137
+2023-09-07 04:56:40.532272: predicting val_138
+2023-09-07 04:56:40.675869: predicting val_139
+2023-09-07 04:56:40.815981: predicting val_14
+2023-09-07 04:56:40.956860: predicting val_140
+2023-09-07 04:56:41.092647: predicting val_141
+2023-09-07 04:56:41.230350: predicting val_142
+2023-09-07 04:56:41.376179: predicting val_143
+2023-09-07 04:56:41.514076: predicting val_144
+2023-09-07 04:56:41.651696: predicting val_145
+2023-09-07 04:56:41.802049: predicting val_146
+2023-09-07 04:56:41.946008: predicting val_147
+2023-09-07 04:56:42.088731: predicting val_148
+2023-09-07 04:56:42.232379: predicting val_149
+2023-09-07 04:56:42.377445: predicting val_15
+2023-09-07 04:56:42.524695: predicting val_150
+2023-09-07 04:56:42.669105: predicting val_151
+2023-09-07 04:56:42.810398: predicting val_152
+2023-09-07 04:56:42.952974: predicting val_153
+2023-09-07 04:56:43.093363: predicting val_154
+2023-09-07 04:56:43.239583: predicting val_155
+2023-09-07 04:56:43.401463: predicting val_156
+2023-09-07 04:56:43.549486: predicting val_157
+2023-09-07 04:56:43.698474: predicting val_158
+2023-09-07 04:56:43.847085: predicting val_159
+2023-09-07 04:56:43.998317: predicting val_16
+2023-09-07 04:56:44.145301: predicting val_160
+2023-09-07 04:56:44.287698: predicting val_161
+2023-09-07 04:56:44.430591: predicting val_162
+2023-09-07 04:56:44.574129: predicting val_163
+2023-09-07 04:56:44.713411: predicting val_164
+2023-09-07 04:56:44.862074: predicting val_165
+2023-09-07 04:56:45.008336: predicting val_166
+2023-09-07 04:56:45.158247: predicting val_167
+2023-09-07 04:56:45.296544: predicting val_168
+2023-09-07 04:56:45.442596: predicting val_169
+2023-09-07 04:56:45.591688: predicting val_17
+2023-09-07 04:56:45.734959: predicting val_170
+2023-09-07 04:56:45.869845: predicting val_171
+2023-09-07 04:56:46.005422: predicting val_172
+2023-09-07 04:56:46.141545: predicting val_173
+2023-09-07 04:56:46.280658: predicting val_174
+2023-09-07 04:56:46.422595: predicting val_175
+2023-09-07 04:56:46.559295: predicting val_176
+2023-09-07 04:56:46.698907: predicting val_177
+2023-09-07 04:56:46.837522: predicting val_178
+2023-09-07 04:56:46.973055: predicting val_179
+2023-09-07 04:56:47.110107: predicting val_18
+2023-09-07 04:56:47.246718: predicting val_180
+2023-09-07 04:56:47.380889: predicting val_181
+2023-09-07 04:56:47.512911: predicting val_182
+2023-09-07 04:56:47.646122: predicting val_183
+2023-09-07 04:56:47.780459: predicting val_184
+2023-09-07 04:56:47.921202: predicting val_185
+2023-09-07 04:56:48.057176: predicting val_186
+2023-09-07 04:56:48.192352: predicting val_187
+2023-09-07 04:56:48.328910: predicting val_188
+2023-09-07 04:56:48.466261: predicting val_189
+2023-09-07 04:56:48.604738: predicting val_19
+2023-09-07 04:56:48.741041: predicting val_190
+2023-09-07 04:56:48.875045: predicting val_191
+2023-09-07 04:56:49.007252: predicting val_192
+2023-09-07 04:56:49.137637: predicting val_193
+2023-09-07 04:56:49.269169: predicting val_194
+2023-09-07 04:56:49.414257: predicting val_195
+2023-09-07 04:56:49.557543: predicting val_196
+2023-09-07 04:56:49.692350: predicting val_197
+2023-09-07 04:56:49.832194: predicting val_198
+2023-09-07 04:56:49.969833: predicting val_199
+2023-09-07 04:56:50.108284: predicting val_2
+2023-09-07 04:56:50.248617: predicting val_20
+2023-09-07 04:56:50.381610: predicting val_200
+2023-09-07 04:56:50.519679: predicting val_201
+2023-09-07 04:56:50.650152: predicting val_202
+2023-09-07 04:56:50.780772: predicting val_203
+2023-09-07 04:56:50.919019: predicting val_204
+2023-09-07 04:56:51.054695: predicting val_205
+2023-09-07 04:56:51.217185: predicting val_206
+2023-09-07 04:56:51.352656: predicting val_207
+2023-09-07 04:56:51.483711: predicting val_208
+2023-09-07 04:56:51.615017: predicting val_209
+2023-09-07 04:56:51.752893: predicting val_21
+2023-09-07 04:56:51.886630: predicting val_210
+2023-09-07 04:56:52.019759: predicting val_211
+2023-09-07 04:56:52.153634: predicting val_212
+2023-09-07 04:56:52.288495: predicting val_213
+2023-09-07 04:56:52.424271: predicting val_214
+2023-09-07 04:56:52.557750: predicting val_215
+2023-09-07 04:56:52.689831: predicting val_216
+2023-09-07 04:56:52.819104: predicting val_217
+2023-09-07 04:56:52.948979: predicting val_218
+2023-09-07 04:56:53.078665: predicting val_219
+2023-09-07 04:56:53.216385: predicting val_22
+2023-09-07 04:56:53.351663: predicting val_220
+2023-09-07 04:56:53.486840: predicting val_221
+2023-09-07 04:56:53.627573: predicting val_222
+2023-09-07 04:56:53.761501: predicting val_223
+2023-09-07 04:56:53.894902: predicting val_224
+2023-09-07 04:56:54.030687: predicting val_225
+2023-09-07 04:56:54.163289: predicting val_226
+2023-09-07 04:56:54.296921: predicting val_227
+2023-09-07 04:56:54.428569: predicting val_228
+2023-09-07 04:56:54.560862: predicting val_229
+2023-09-07 04:56:54.690889: predicting val_23
+2023-09-07 04:56:54.832744: predicting val_230
+2023-09-07 04:56:54.974477: predicting val_231
+2023-09-07 04:56:55.113419: predicting val_232
+2023-09-07 04:56:55.256951: predicting val_233
+2023-09-07 04:56:55.444637: predicting val_234
+2023-09-07 04:56:55.591615: predicting val_235
+2023-09-07 04:56:55.729569: predicting val_236
+2023-09-07 04:56:55.863671: predicting val_237
+2023-09-07 04:56:56.000624: predicting val_238
+2023-09-07 04:56:56.141023: predicting val_239
+2023-09-07 04:56:56.281381: predicting val_24
+2023-09-07 04:56:56.422904: predicting val_240
+2023-09-07 04:56:56.562628: predicting val_241
+2023-09-07 04:56:56.735044: predicting val_242
+2023-09-07 04:56:56.915803: predicting val_243
+2023-09-07 04:56:57.071251: predicting val_244
+2023-09-07 04:56:57.211005: predicting val_245
+2023-09-07 04:56:57.358891: predicting val_246
+2023-09-07 04:56:57.499834: predicting val_247
+2023-09-07 04:56:57.638281: predicting val_248
+2023-09-07 04:56:57.787240: predicting val_249
+2023-09-07 04:56:57.932199: predicting val_25
+2023-09-07 04:56:58.085478: predicting val_250
+2023-09-07 04:56:58.241475: predicting val_251
+2023-09-07 04:56:58.383841: predicting val_252
+2023-09-07 04:56:58.522358: predicting val_253
+2023-09-07 04:56:58.661092: predicting val_254
+2023-09-07 04:56:58.793431: predicting val_255
+2023-09-07 04:56:58.924001: predicting val_256
+2023-09-07 04:56:59.054416: predicting val_257
+2023-09-07 04:56:59.185371: predicting val_258
+2023-09-07 04:56:59.314748: predicting val_259
+2023-09-07 04:56:59.444573: predicting val_26
+2023-09-07 04:56:59.574348: predicting val_260
+2023-09-07 04:56:59.703314: predicting val_261
+2023-09-07 04:56:59.835600: predicting val_262
+2023-09-07 04:56:59.965908: predicting val_263
+2023-09-07 04:57:00.095186: predicting val_264
+2023-09-07 04:57:00.226072: predicting val_265
+2023-09-07 04:57:00.356679: predicting val_266
+2023-09-07 04:57:00.486024: predicting val_267
+2023-09-07 04:57:00.617692: predicting val_268
+2023-09-07 04:57:00.749689: predicting val_269
+2023-09-07 04:57:00.878176: predicting val_27
+2023-09-07 04:57:01.008519: predicting val_270
+2023-09-07 04:57:01.138118: predicting val_271
+2023-09-07 04:57:01.266943: predicting val_272
+2023-09-07 04:57:01.397230: predicting val_273
+2023-09-07 04:57:01.527562: predicting val_274
+2023-09-07 04:57:01.661895: predicting val_275
+2023-09-07 04:57:01.795150: predicting val_276
+2023-09-07 04:57:01.944546: predicting val_277
+2023-09-07 04:57:02.089789: predicting val_278
+2023-09-07 04:57:02.231560: predicting val_279
+2023-09-07 04:57:02.376453: predicting val_28
+2023-09-07 04:57:02.516606: predicting val_280
+2023-09-07 04:57:02.656425: predicting val_281
+2023-09-07 04:57:02.807861: predicting val_282
+2023-09-07 04:57:02.951340: predicting val_283
+2023-09-07 04:57:03.094258: predicting val_284
+2023-09-07 04:57:03.237524: predicting val_285
+2023-09-07 04:57:03.377562: predicting val_286
+2023-09-07 04:57:03.518407: predicting val_287
+2023-09-07 04:57:03.658918: predicting val_288
+2023-09-07 04:57:03.800353: predicting val_289
+2023-09-07 04:57:03.940658: predicting val_29
+2023-09-07 04:57:04.078667: predicting val_290
+2023-09-07 04:57:04.221334: predicting val_291
+2023-09-07 04:57:04.359274: predicting val_292
+2023-09-07 04:57:04.504312: predicting val_293
+2023-09-07 04:57:04.654242: predicting val_294
+2023-09-07 04:57:04.795553: predicting val_295
+2023-09-07 04:57:04.935100: predicting val_296
+2023-09-07 04:57:05.073414: predicting val_297
+2023-09-07 04:57:05.218308: predicting val_298
+2023-09-07 04:57:05.360954: predicting val_299
+2023-09-07 04:57:05.503550: predicting val_3
+2023-09-07 04:57:05.653032: predicting val_30
+2023-09-07 04:57:05.807457: predicting val_300
+2023-09-07 04:57:05.946385: predicting val_301
+2023-09-07 04:57:06.083708: predicting val_302
+2023-09-07 04:57:06.226184: predicting val_303
+2023-09-07 04:57:06.364671: predicting val_304
+2023-09-07 04:57:06.506545: predicting val_305
+2023-09-07 04:57:06.644931: predicting val_306
+2023-09-07 04:57:06.781968: predicting val_307
+2023-09-07 04:57:06.922403: predicting val_308
+2023-09-07 04:57:07.071274: predicting val_309
+2023-09-07 04:57:07.213306: predicting val_31
+2023-09-07 04:57:07.354570: predicting val_310
+2023-09-07 04:57:07.502147: predicting val_311
+2023-09-07 04:57:07.652020: predicting val_312
+2023-09-07 04:57:07.795179: predicting val_313
+2023-09-07 04:57:07.944685: predicting val_314
+2023-09-07 04:57:08.086949: predicting val_315
+2023-09-07 04:57:08.222431: predicting val_316
+2023-09-07 04:57:08.364082: predicting val_317
+2023-09-07 04:57:08.509598: predicting val_318
+2023-09-07 04:57:08.648659: predicting val_319
+2023-09-07 04:57:08.793651: predicting val_32
+2023-09-07 04:57:08.932182: predicting val_320
+2023-09-07 04:57:09.095693: predicting val_321
+2023-09-07 04:57:09.259254: predicting val_322
+2023-09-07 04:57:09.417750: predicting val_323
+2023-09-07 04:57:09.567122: predicting val_324
+2023-09-07 04:57:09.706712: predicting val_325
+2023-09-07 04:57:09.860150: predicting val_326
+2023-09-07 04:57:10.003375: predicting val_327
+2023-09-07 04:57:10.144961: predicting val_328
+2023-09-07 04:57:10.290126: predicting val_329
+2023-09-07 04:57:10.433496: predicting val_33
+2023-09-07 04:57:10.582638: predicting val_330
+2023-09-07 04:57:10.747466: predicting val_331
+2023-09-07 04:57:10.906411: predicting val_332
+2023-09-07 04:57:11.057103: predicting val_333
+2023-09-07 04:57:11.209593: predicting val_334
+2023-09-07 04:57:11.362105: predicting val_335
+2023-09-07 04:57:11.512326: predicting val_336
+2023-09-07 04:57:11.666819: predicting val_337
+2023-09-07 04:57:11.816857: predicting val_338
+2023-09-07 04:57:11.973077: predicting val_339
+2023-09-07 04:57:12.122613: predicting val_34
+2023-09-07 04:57:12.272588: predicting val_340
+2023-09-07 04:57:12.424459: predicting val_341
+2023-09-07 04:57:12.573945: predicting val_342
+2023-09-07 04:57:12.721487: predicting val_343
+2023-09-07 04:57:12.875754: predicting val_344
+2023-09-07 04:57:13.033231: predicting val_345
+2023-09-07 04:57:13.182606: predicting val_346
+2023-09-07 04:57:13.347578: predicting val_347
+2023-09-07 04:57:13.504294: predicting val_348
+2023-09-07 04:57:13.661481: predicting val_349
+2023-09-07 04:57:13.821324: predicting val_35
+2023-09-07 04:57:13.980365: predicting val_350
+2023-09-07 04:57:14.139714: predicting val_351
+2023-09-07 04:57:14.288324: predicting val_352
+2023-09-07 04:57:14.439775: predicting val_353
+2023-09-07 04:57:14.585146: predicting val_354
+2023-09-07 04:57:14.738165: predicting val_355
+2023-09-07 04:57:14.886370: predicting val_356
+2023-09-07 04:57:15.037600: predicting val_357
+2023-09-07 04:57:15.190712: predicting val_358
+2023-09-07 04:57:15.341244: predicting val_359
+2023-09-07 04:57:15.494726: predicting val_36
+2023-09-07 04:57:15.655516: predicting val_360
+2023-09-07 04:57:15.809916: predicting val_361
+2023-09-07 04:57:15.965299: predicting val_362
+2023-09-07 04:57:16.115903: predicting val_363
+2023-09-07 04:57:16.275023: predicting val_364
+2023-09-07 04:57:16.432562: predicting val_365
+2023-09-07 04:57:16.592201: predicting val_366
+2023-09-07 04:57:16.740654: predicting val_367
+2023-09-07 04:57:16.897589: predicting val_368
+2023-09-07 04:57:17.055683: predicting val_369
+2023-09-07 04:57:17.224415: predicting val_37
+2023-09-07 04:57:17.394332: predicting val_370
+2023-09-07 04:57:17.562680: predicting val_371
+2023-09-07 04:57:17.728993: predicting val_372
+2023-09-07 04:57:17.882861: predicting val_373
+2023-09-07 04:57:18.033430: predicting val_374
+2023-09-07 04:57:18.189765: predicting val_375
+2023-09-07 04:57:18.340327: predicting val_376
+2023-09-07 04:57:18.493336: predicting val_377
+2023-09-07 04:57:18.643970: predicting val_378
+2023-09-07 04:57:18.794856: predicting val_379
+2023-09-07 04:57:18.946838: predicting val_38
+2023-09-07 04:57:19.107930: predicting val_380
+2023-09-07 04:57:19.275147: predicting val_381
+2023-09-07 04:57:19.444149: predicting val_382
+2023-09-07 04:57:19.613104: predicting val_383
+2023-09-07 04:57:19.780509: predicting val_384
+2023-09-07 04:57:19.928653: predicting val_385
+2023-09-07 04:57:20.080615: predicting val_386
+2023-09-07 04:57:20.240419: predicting val_387
+2023-09-07 04:57:20.392583: predicting val_388
+2023-09-07 04:57:20.543207: predicting val_389
+2023-09-07 04:57:20.692833: predicting val_39
+2023-09-07 04:57:20.839872: predicting val_390
+2023-09-07 04:57:20.991250: predicting val_391
+2023-09-07 04:57:21.144413: predicting val_392
+2023-09-07 04:57:21.299774: predicting val_393
+2023-09-07 04:57:21.457407: predicting val_394
+2023-09-07 04:57:21.609803: predicting val_395
+2023-09-07 04:57:21.762632: predicting val_396
+2023-09-07 04:57:21.915834: predicting val_397
+2023-09-07 04:57:22.066799: predicting val_398
+2023-09-07 04:57:22.217424: predicting val_399
+2023-09-07 04:57:22.372659: predicting val_4
+2023-09-07 04:57:22.537072: predicting val_40
+2023-09-07 04:57:22.695588: predicting val_400
+2023-09-07 04:57:22.848005: predicting val_401
+2023-09-07 04:57:23.022412: predicting val_402
+2023-09-07 04:57:23.188194: predicting val_403
+2023-09-07 04:57:23.359134: predicting val_404
+2023-09-07 04:57:23.524951: predicting val_405
+2023-09-07 04:57:23.695765: predicting val_406
+2023-09-07 04:57:23.880876: predicting val_407
+2023-09-07 04:57:24.042969: predicting val_408
+2023-09-07 04:57:24.219732: predicting val_409
+2023-09-07 04:57:24.388623: predicting val_41
+2023-09-07 04:57:24.546075: predicting val_410
+2023-09-07 04:57:24.709229: predicting val_411
+2023-09-07 04:57:24.862022: predicting val_412
+2023-09-07 04:57:25.021316: predicting val_413
+2023-09-07 04:57:25.175081: predicting val_414
+2023-09-07 04:57:25.334634: predicting val_415
+2023-09-07 04:57:25.491731: predicting val_416
+2023-09-07 04:57:25.649766: predicting val_417
+2023-09-07 04:57:25.820943: predicting val_418
+2023-09-07 04:57:25.992804: predicting val_419
+2023-09-07 04:57:26.172239: predicting val_42
+2023-09-07 04:57:26.347894: predicting val_420
+2023-09-07 04:57:26.513428: predicting val_421
+2023-09-07 04:57:26.677102: predicting val_422
+2023-09-07 04:57:26.835840: predicting val_423
+2023-09-07 04:57:26.990593: predicting val_424
+2023-09-07 04:57:27.162755: predicting val_425
+2023-09-07 04:57:27.310832: predicting val_426
+2023-09-07 04:57:27.452928: predicting val_427
+2023-09-07 04:57:27.582824: predicting val_428
+2023-09-07 04:57:27.736583: predicting val_429
+2023-09-07 04:57:27.881900: predicting val_43
+2023-09-07 04:57:28.027519: predicting val_430
+2023-09-07 04:57:28.173875: predicting val_431
+2023-09-07 04:57:28.320221: predicting val_432
+2023-09-07 04:57:28.468823: predicting val_433
+2023-09-07 04:57:28.612593: predicting val_434
+2023-09-07 04:57:28.757827: predicting val_435
+2023-09-07 04:57:28.902336: predicting val_436
+2023-09-07 04:57:29.051104: predicting val_437
+2023-09-07 04:57:29.204686: predicting val_438
+2023-09-07 04:57:29.352102: predicting val_439
+2023-09-07 04:57:29.497359: predicting val_44
+2023-09-07 04:57:29.643477: predicting val_440
+2023-09-07 04:57:29.788565: predicting val_441
+2023-09-07 04:57:29.933913: predicting val_442
+2023-09-07 04:57:30.078553: predicting val_443
+2023-09-07 04:57:30.222968: predicting val_444
+2023-09-07 04:57:30.369421: predicting val_445
+2023-09-07 04:57:30.516503: predicting val_446
+2023-09-07 04:57:30.661805: predicting val_447
+2023-09-07 04:57:30.806836: predicting val_448
+2023-09-07 04:57:30.952056: predicting val_449
+2023-09-07 04:57:31.097860: predicting val_45
+2023-09-07 04:57:31.245333: predicting val_450
+2023-09-07 04:57:31.390818: predicting val_451
+2023-09-07 04:57:31.535650: predicting val_452
+2023-09-07 04:57:31.680602: predicting val_453
+2023-09-07 04:57:31.826193: predicting val_454
+2023-09-07 04:57:31.970120: predicting val_455
+2023-09-07 04:57:32.116978: predicting val_456
+2023-09-07 04:57:32.261971: predicting val_457
+2023-09-07 04:57:32.406786: predicting val_458
+2023-09-07 04:57:32.561897: predicting val_459
+2023-09-07 04:57:32.720560: predicting val_46
+2023-09-07 04:57:32.869787: predicting val_460
+2023-09-07 04:57:33.016178: predicting val_461
+2023-09-07 04:57:33.165202: predicting val_462
+2023-09-07 04:57:33.312490: predicting val_463
+2023-09-07 04:57:33.460152: predicting val_464
+2023-09-07 04:57:33.609264: predicting val_465
+2023-09-07 04:57:33.756508: predicting val_466
+2023-09-07 04:57:33.904818: predicting val_467
+2023-09-07 04:57:34.054340: predicting val_468
+2023-09-07 04:57:34.202669: predicting val_469
+2023-09-07 04:57:34.350964: predicting val_47
+2023-09-07 04:57:34.498362: predicting val_470
+2023-09-07 04:57:34.650473: predicting val_471
+2023-09-07 04:57:34.799184: predicting val_472
+2023-09-07 04:57:34.947320: predicting val_473
+2023-09-07 04:57:35.095993: predicting val_474
+2023-09-07 04:57:35.245023: predicting val_475
+2023-09-07 04:57:35.394487: predicting val_476
+2023-09-07 04:57:35.545203: predicting val_477
+2023-09-07 04:57:35.699922: predicting val_478
+2023-09-07 04:57:35.857676: predicting val_479
+2023-09-07 04:57:36.005412: predicting val_48
+2023-09-07 04:57:36.152589: predicting val_480
+2023-09-07 04:57:36.298610: predicting val_481
+2023-09-07 04:57:36.448929: predicting val_482
+2023-09-07 04:57:36.584726: predicting val_483
+2023-09-07 04:57:36.717259: predicting val_484
+2023-09-07 04:57:36.859464: predicting val_485
+2023-09-07 04:57:37.008946: predicting val_486
+2023-09-07 04:57:37.156022: predicting val_487
+2023-09-07 04:57:37.302401: predicting val_488
+2023-09-07 04:57:37.449704: predicting val_489
+2023-09-07 04:57:37.595696: predicting val_49
+2023-09-07 04:57:37.740477: predicting val_490
+2023-09-07 04:57:37.887135: predicting val_491
+2023-09-07 04:57:38.033825: predicting val_492
+2023-09-07 04:57:38.179867: predicting val_493
+2023-09-07 04:57:38.329609: predicting val_494
+2023-09-07 04:57:38.478486: predicting val_495
+2023-09-07 04:57:38.631775: predicting val_496
+2023-09-07 04:57:38.778824: predicting val_497
+2023-09-07 04:57:38.928292: predicting val_498
+2023-09-07 04:57:39.075141: predicting val_499
+2023-09-07 04:57:39.223018: predicting val_5
+2023-09-07 04:57:39.368026: predicting val_50
+2023-09-07 04:57:39.514331: predicting val_500
+2023-09-07 04:57:39.664069: predicting val_501
+2023-09-07 04:57:39.818712: predicting val_502
+2023-09-07 04:57:39.950625: predicting val_503
+2023-09-07 04:57:40.082465: predicting val_504
+2023-09-07 04:57:40.217648: predicting val_505
+2023-09-07 04:57:40.352275: predicting val_506
+2023-09-07 04:57:40.490082: predicting val_507
+2023-09-07 04:57:40.632941: predicting val_508
+2023-09-07 04:57:40.765538: predicting val_509
+2023-09-07 04:57:40.898223: predicting val_51
+2023-09-07 04:57:41.029603: predicting val_510
+2023-09-07 04:57:41.160358: predicting val_511
+2023-09-07 04:57:41.291092: predicting val_512
+2023-09-07 04:57:41.421674: predicting val_513
+2023-09-07 04:57:41.556039: predicting val_514
+2023-09-07 04:57:41.684936: predicting val_515
+2023-09-07 04:57:41.819201: predicting val_516
+2023-09-07 04:57:41.949624: predicting val_517
+2023-09-07 04:57:42.078836: predicting val_518
+2023-09-07 04:57:42.206647: predicting val_519
+2023-09-07 04:57:42.338878: predicting val_52
+2023-09-07 04:57:42.467982: predicting val_520
+2023-09-07 04:57:42.597985: predicting val_521
+2023-09-07 04:57:42.735091: predicting val_522
+2023-09-07 04:57:42.864102: predicting val_523
+2023-09-07 04:57:42.993391: predicting val_524
+2023-09-07 04:57:43.122976: predicting val_525
+2023-09-07 04:57:43.251307: predicting val_526
+2023-09-07 04:57:43.380360: predicting val_527
+2023-09-07 04:57:43.510411: predicting val_528
+2023-09-07 04:57:43.640161: predicting val_529
+2023-09-07 04:57:43.769952: predicting val_53
+2023-09-07 04:57:43.899221: predicting val_530
+2023-09-07 04:57:44.029308: predicting val_531
+2023-09-07 04:57:44.158435: predicting val_532
+2023-09-07 04:57:44.289910: predicting val_533
+2023-09-07 04:57:44.419354: predicting val_534
+2023-09-07 04:57:44.550796: predicting val_535
+2023-09-07 04:57:44.685448: predicting val_536
+2023-09-07 04:57:44.816083: predicting val_537
+2023-09-07 04:57:44.946050: predicting val_538
+2023-09-07 04:57:45.076632: predicting val_539
+2023-09-07 04:57:45.206101: predicting val_54
+2023-09-07 04:57:45.336490: predicting val_540
+2023-09-07 04:57:45.468028: predicting val_541
+2023-09-07 04:57:45.601637: predicting val_542
+2023-09-07 04:57:45.732648: predicting val_543
+2023-09-07 04:57:45.863941: predicting val_544
+2023-09-07 04:57:45.995751: predicting val_545
+2023-09-07 04:57:46.126384: predicting val_546
+2023-09-07 04:57:46.257314: predicting val_547
+2023-09-07 04:57:46.389426: predicting val_548
+2023-09-07 04:57:46.520021: predicting val_549
+2023-09-07 04:57:46.654389: predicting val_55
+2023-09-07 04:57:46.784113: predicting val_550
+2023-09-07 04:57:46.914176: predicting val_551
+2023-09-07 04:57:47.051039: predicting val_552
+2023-09-07 04:57:47.182906: predicting val_553
+2023-09-07 04:57:47.316173: predicting val_554
+2023-09-07 04:57:47.448231: predicting val_555
+2023-09-07 04:57:47.583551: predicting val_556
+2023-09-07 04:57:47.716797: predicting val_557
+2023-09-07 04:57:47.848743: predicting val_558
+2023-09-07 04:57:47.980597: predicting val_559
+2023-09-07 04:57:48.161770: predicting val_56
+2023-09-07 04:57:48.295076: predicting val_560
+2023-09-07 04:57:48.430253: predicting val_561
+2023-09-07 04:57:48.560160: predicting val_562
+2023-09-07 04:57:48.693576: predicting val_563
+2023-09-07 04:57:48.847974: predicting val_564
+2023-09-07 04:57:48.981691: predicting val_565
+2023-09-07 04:57:49.124401: predicting val_566
+2023-09-07 04:57:49.268256: predicting val_567
+2023-09-07 04:57:49.402506: predicting val_568
+2023-09-07 04:57:49.536026: predicting val_569
+2023-09-07 04:57:49.666955: predicting val_57
+2023-09-07 04:57:49.804413: predicting val_570
+2023-09-07 04:57:49.970109: predicting val_571
+2023-09-07 04:57:50.110784: predicting val_572
+2023-09-07 04:57:50.241347: predicting val_573
+2023-09-07 04:57:50.372041: predicting val_574
+2023-09-07 04:57:50.501914: predicting val_575
+2023-09-07 04:57:50.632228: predicting val_576
+2023-09-07 04:57:50.762359: predicting val_577
+2023-09-07 04:57:50.895691: predicting val_578
+2023-09-07 04:57:51.028364: predicting val_579
+2023-09-07 04:57:51.161093: predicting val_58
+2023-09-07 04:57:51.292747: predicting val_580
+2023-09-07 04:57:51.429033: predicting val_581
+2023-09-07 04:57:51.568579: predicting val_582
+2023-09-07 04:57:51.701359: predicting val_583
+2023-09-07 04:57:51.833112: predicting val_584
+2023-09-07 04:57:51.964566: predicting val_585
+2023-09-07 04:57:52.096915: predicting val_586
+2023-09-07 04:57:52.228454: predicting val_587
+2023-09-07 04:57:52.360953: predicting val_588
+2023-09-07 04:57:52.493268: predicting val_589
+2023-09-07 04:57:52.625649: predicting val_59
+2023-09-07 04:57:52.757842: predicting val_590
+2023-09-07 04:57:52.889703: predicting val_591
+2023-09-07 04:57:53.025979: predicting val_592
+2023-09-07 04:57:53.159751: predicting val_593
+2023-09-07 04:57:53.290454: predicting val_594
+2023-09-07 04:57:53.422771: predicting val_595
+2023-09-07 04:57:53.553240: predicting val_596
+2023-09-07 04:57:53.681804: predicting val_597
+2023-09-07 04:57:53.811660: predicting val_598
+2023-09-07 04:57:53.941987: predicting val_599
+2023-09-07 04:57:54.070955: predicting val_6
+2023-09-07 04:57:54.201318: predicting val_60
+2023-09-07 04:57:54.330112: predicting val_600
+2023-09-07 04:57:54.460622: predicting val_601
+2023-09-07 04:57:54.590149: predicting val_602
+2023-09-07 04:57:54.722372: predicting val_603
+2023-09-07 04:57:54.852899: predicting val_604
+2023-09-07 04:57:54.984868: predicting val_605
+2023-09-07 04:57:55.114868: predicting val_606
+2023-09-07 04:57:55.245021: predicting val_607
+2023-09-07 04:57:55.375317: predicting val_608
+2023-09-07 04:57:55.506227: predicting val_609
+2023-09-07 04:57:55.635156: predicting val_61
+2023-09-07 04:57:55.766174: predicting val_610
+2023-09-07 04:57:55.894939: predicting val_611
+2023-09-07 04:57:56.025390: predicting val_612
+2023-09-07 04:57:56.154222: predicting val_613
+2023-09-07 04:57:56.283285: predicting val_614
+2023-09-07 04:57:56.412762: predicting val_615
+2023-09-07 04:57:56.543343: predicting val_616
+2023-09-07 04:57:56.673155: predicting val_617
+2023-09-07 04:57:56.803787: predicting val_618
+2023-09-07 04:57:56.932761: predicting val_619
+2023-09-07 04:57:57.067814: predicting val_62
+2023-09-07 04:57:57.197367: predicting val_620
+2023-09-07 04:57:57.327159: predicting val_621
+2023-09-07 04:57:57.457302: predicting val_622
+2023-09-07 04:57:57.588295: predicting val_623
+2023-09-07 04:57:57.717766: predicting val_624
+2023-09-07 04:57:57.846845: predicting val_625
+2023-09-07 04:57:57.976806: predicting val_626
+2023-09-07 04:57:58.107432: predicting val_627
+2023-09-07 04:57:58.237636: predicting val_628
+2023-09-07 04:57:58.369131: predicting val_629
+2023-09-07 04:57:58.499222: predicting val_63
+2023-09-07 04:57:58.631227: predicting val_630
+2023-09-07 04:57:58.761011: predicting val_631
+2023-09-07 04:57:58.890730: predicting val_632
+2023-09-07 04:57:59.021274: predicting val_633
+2023-09-07 04:57:59.158402: predicting val_634
+2023-09-07 04:57:59.287887: predicting val_635
+2023-09-07 04:57:59.417852: predicting val_636
+2023-09-07 04:57:59.546704: predicting val_637
+2023-09-07 04:57:59.678541: predicting val_638
+2023-09-07 04:57:59.807677: predicting val_639
+2023-09-07 04:57:59.938449: predicting val_64
+2023-09-07 04:58:00.069286: predicting val_640
+2023-09-07 04:58:00.199523: predicting val_641
+2023-09-07 04:58:00.329137: predicting val_642
+2023-09-07 04:58:00.459384: predicting val_643
+2023-09-07 04:58:00.588630: predicting val_644
+2023-09-07 04:58:00.718156: predicting val_645
+2023-09-07 04:58:00.849036: predicting val_646
+2023-09-07 04:58:00.978667: predicting val_647
+2023-09-07 04:58:01.114553: predicting val_648
+2023-09-07 04:58:01.245585: predicting val_649
+2023-09-07 04:58:01.375736: predicting val_65
+2023-09-07 04:58:01.507022: predicting val_650
+2023-09-07 04:58:01.637033: predicting val_651
+2023-09-07 04:58:01.767018: predicting val_652
+2023-09-07 04:58:01.896762: predicting val_653
+2023-09-07 04:58:02.028172: predicting val_654
+2023-09-07 04:58:02.158247: predicting val_655
+2023-09-07 04:58:02.288883: predicting val_656
+2023-09-07 04:58:02.421503: predicting val_657
+2023-09-07 04:58:02.551909: predicting val_658
+2023-09-07 04:58:02.682072: predicting val_659
+2023-09-07 04:58:02.817650: predicting val_66
+2023-09-07 04:58:02.951719: predicting val_660
+2023-09-07 04:58:03.082780: predicting val_661
+2023-09-07 04:58:03.225899: predicting val_662
+2023-09-07 04:58:03.362736: predicting val_663
+2023-09-07 04:58:03.497532: predicting val_664
+2023-09-07 04:58:03.632620: predicting val_665
+2023-09-07 04:58:03.767081: predicting val_666
+2023-09-07 04:58:03.901970: predicting val_667
+2023-09-07 04:58:04.039634: predicting val_668
+2023-09-07 04:58:04.174413: predicting val_669
+2023-09-07 04:58:04.308178: predicting val_67
+2023-09-07 04:58:04.439736: predicting val_670
+2023-09-07 04:58:04.571150: predicting val_671
+2023-09-07 04:58:04.703439: predicting val_672
+2023-09-07 04:58:04.834755: predicting val_673
+2023-09-07 04:58:04.967364: predicting val_674
+2023-09-07 04:58:05.101481: predicting val_675
+2023-09-07 04:58:05.234691: predicting val_676
+2023-09-07 04:58:05.366856: predicting val_677
+2023-09-07 04:58:05.498978: predicting val_678
+2023-09-07 04:58:05.630205: predicting val_679
+2023-09-07 04:58:05.762799: predicting val_68
+2023-09-07 04:58:05.894168: predicting val_680
+2023-09-07 04:58:06.027649: predicting val_681
+2023-09-07 04:58:06.161567: predicting val_682
+2023-09-07 04:58:06.294322: predicting val_683
+2023-09-07 04:58:06.426204: predicting val_684
+2023-09-07 04:58:06.559474: predicting val_685
+2023-09-07 04:58:06.689285: predicting val_686
+2023-09-07 04:58:06.819365: predicting val_687
+2023-09-07 04:58:06.948913: predicting val_688
+2023-09-07 04:58:07.079582: predicting val_689
+2023-09-07 04:58:07.224532: predicting val_69
+2023-09-07 04:58:07.359719: predicting val_690
+2023-09-07 04:58:07.490526: predicting val_691
+2023-09-07 04:58:07.621157: predicting val_692
+2023-09-07 04:58:07.753113: predicting val_693
+2023-09-07 04:58:07.885079: predicting val_694
+2023-09-07 04:58:08.017625: predicting val_695
+2023-09-07 04:58:08.149645: predicting val_696
+2023-09-07 04:58:08.281622: predicting val_697
+2023-09-07 04:58:08.413920: predicting val_698
+2023-09-07 04:58:08.545412: predicting val_699
+2023-09-07 04:58:08.679366: predicting val_7
+2023-09-07 04:58:08.811108: predicting val_70
+2023-09-07 04:58:08.942428: predicting val_700
+2023-09-07 04:58:09.076174: predicting val_701
+2023-09-07 04:58:09.211536: predicting val_702
+2023-09-07 04:58:09.348701: predicting val_703
+2023-09-07 04:58:09.485849: predicting val_704
+2023-09-07 04:58:09.621067: predicting val_705
+2023-09-07 04:58:09.755777: predicting val_706
+2023-09-07 04:58:09.888705: predicting val_707
+2023-09-07 04:58:10.021155: predicting val_708
+2023-09-07 04:58:10.156992: predicting val_709
+2023-09-07 04:58:10.296617: predicting val_71
+2023-09-07 04:58:10.432613: predicting val_710
+2023-09-07 04:58:10.567553: predicting val_711
+2023-09-07 04:58:10.698874: predicting val_712
+2023-09-07 04:58:10.830592: predicting val_713
+2023-09-07 04:58:10.964030: predicting val_714
+2023-09-07 04:58:11.097721: predicting val_715
+2023-09-07 04:58:11.231445: predicting val_716
+2023-09-07 04:58:11.366084: predicting val_717
+2023-09-07 04:58:11.503810: predicting val_718
+2023-09-07 04:58:11.648551: predicting val_719
+2023-09-07 04:58:11.786328: predicting val_72
+2023-09-07 04:58:11.923325: predicting val_720
+2023-09-07 04:58:12.057979: predicting val_721
+2023-09-07 04:58:12.193336: predicting val_722
+2023-09-07 04:58:12.327657: predicting val_723
+2023-09-07 04:58:12.463198: predicting val_724
+2023-09-07 04:58:12.606863: predicting val_725
+2023-09-07 04:58:12.740576: predicting val_726
+2023-09-07 04:58:12.874758: predicting val_727
+2023-09-07 04:58:24.204665: predicting val_728
+2023-09-07 04:58:24.339675: predicting val_729
+2023-09-07 04:58:24.483674: predicting val_73
+2023-09-07 04:58:24.631766: predicting val_730
+2023-09-07 04:58:24.781140: predicting val_731
+2023-09-07 04:58:24.939753: predicting val_732
+2023-09-07 04:58:25.094740: predicting val_733
+2023-09-07 04:58:25.247308: predicting val_734
+2023-09-07 04:58:25.400280: predicting val_735
+2023-09-07 04:58:25.556241: predicting val_736
+2023-09-07 04:58:25.713926: predicting val_737
+2023-09-07 04:58:25.866347: predicting val_738
+2023-09-07 04:58:26.017917: predicting val_739
+2023-09-07 04:58:26.161635: predicting val_74
+2023-09-07 04:58:26.295709: predicting val_740
+2023-09-07 04:58:26.428225: predicting val_741
+2023-09-07 04:58:26.589757: predicting val_742
+2023-09-07 04:58:26.730773: predicting val_743
+2023-09-07 04:58:26.862648: predicting val_744
+2023-09-07 04:58:26.992903: predicting val_745
+2023-09-07 04:58:27.147177: predicting val_746
+2023-09-07 04:58:27.292476: predicting val_747
+2023-09-07 04:58:27.439242: predicting val_748
+2023-09-07 04:58:27.586178: predicting val_749
+2023-09-07 04:58:27.734862: predicting val_75
+2023-09-07 04:58:27.882729: predicting val_750
+2023-09-07 04:58:28.029052: predicting val_751
+2023-09-07 04:58:28.177288: predicting val_752
+2023-09-07 04:58:28.325238: predicting val_753
+2023-09-07 04:58:28.473599: predicting val_754
+2023-09-07 04:58:28.622495: predicting val_755
+2023-09-07 04:58:28.762879: predicting val_756
+2023-09-07 04:58:28.895478: predicting val_757
+2023-09-07 04:58:29.027851: predicting val_758
+2023-09-07 04:58:29.160175: predicting val_759
+2023-09-07 04:58:29.292809: predicting val_76
+2023-09-07 04:58:29.423986: predicting val_760
+2023-09-07 04:58:29.555925: predicting val_761
+2023-09-07 04:58:29.690633: predicting val_762
+2023-09-07 04:58:29.826588: predicting val_763
+2023-09-07 04:58:29.957911: predicting val_764
+2023-09-07 04:58:30.089986: predicting val_765
+2023-09-07 04:58:30.222216: predicting val_766
+2023-09-07 04:58:30.355376: predicting val_767
+2023-09-07 04:58:30.489263: predicting val_768
+2023-09-07 04:58:30.625427: predicting val_769
+2023-09-07 04:58:30.763132: predicting val_77
+2023-09-07 04:58:30.904199: predicting val_770
+2023-09-07 04:58:31.042158: predicting val_771
+2023-09-07 04:58:31.181240: predicting val_772
+2023-09-07 04:58:31.325358: predicting val_773
+2023-09-07 04:58:31.465416: predicting val_774
+2023-09-07 04:58:31.607893: predicting val_775
+2023-09-07 04:58:31.752783: predicting val_776
+2023-09-07 04:58:31.886744: predicting val_777
+2023-09-07 04:58:32.021233: predicting val_778
+2023-09-07 04:58:32.156346: predicting val_779
+2023-09-07 04:58:32.293504: predicting val_78
+2023-09-07 04:58:32.431768: predicting val_780
+2023-09-07 04:58:32.567133: predicting val_781
+2023-09-07 04:58:32.703189: predicting val_782
+2023-09-07 04:58:32.836359: predicting val_783
+2023-09-07 04:58:32.968900: predicting val_784
+2023-09-07 04:58:33.104637: predicting val_785
+2023-09-07 04:58:33.237771: predicting val_786
+2023-09-07 04:58:33.371618: predicting val_787
+2023-09-07 04:58:33.504944: predicting val_788
+2023-09-07 04:58:33.637871: predicting val_789
+2023-09-07 04:58:33.783389: predicting val_79
+2023-09-07 04:58:33.922493: predicting val_790
+2023-09-07 04:58:34.060916: predicting val_791
+2023-09-07 04:58:34.195218: predicting val_792
+2023-09-07 04:58:34.330315: predicting val_793
+2023-09-07 04:58:34.462707: predicting val_794
+2023-09-07 04:58:34.592120: predicting val_795
+2023-09-07 04:58:34.722561: predicting val_796
+2023-09-07 04:58:34.853021: predicting val_797
+2023-09-07 04:58:34.985274: predicting val_798
+2023-09-07 04:58:35.116431: predicting val_799
+2023-09-07 04:58:35.247384: predicting val_8
+2023-09-07 04:58:35.378684: predicting val_80
+2023-09-07 04:58:35.509890: predicting val_800
+2023-09-07 04:58:35.641907: predicting val_801
+2023-09-07 04:58:35.772730: predicting val_802
+2023-09-07 04:58:35.907706: predicting val_803
+2023-09-07 04:58:36.038610: predicting val_804
+2023-09-07 04:58:36.168645: predicting val_805
+2023-09-07 04:58:36.299323: predicting val_806
+2023-09-07 04:58:36.430258: predicting val_807
+2023-09-07 04:58:36.569398: predicting val_81
+2023-09-07 04:58:36.699340: predicting val_82
+2023-09-07 04:58:36.829914: predicting val_83
+2023-09-07 04:58:36.962578: predicting val_84
+2023-09-07 04:58:37.092858: predicting val_85
+2023-09-07 04:58:37.223852: predicting val_86
+2023-09-07 04:58:37.353483: predicting val_87
+2023-09-07 04:58:37.484003: predicting val_88
+2023-09-07 04:58:37.614182: predicting val_89
+2023-09-07 04:58:37.744549: predicting val_9
+2023-09-07 04:58:37.878216: predicting val_90
+2023-09-07 04:58:38.009784: predicting val_91
+2023-09-07 04:58:38.140334: predicting val_92
+2023-09-07 04:58:38.270072: predicting val_93
+2023-09-07 04:58:38.399734: predicting val_94
+2023-09-07 04:58:38.530078: predicting val_95
+2023-09-07 04:58:38.658526: predicting val_96
+2023-09-07 04:58:38.789107: predicting val_97
+2023-09-07 04:58:38.919853: predicting val_98
+2023-09-07 04:58:39.050637: predicting val_99
+2023-09-07 04:59:07.679102: Validation complete
+2023-09-07 04:59:07.680493: Mean Validation Dice:  0.9028867149854648

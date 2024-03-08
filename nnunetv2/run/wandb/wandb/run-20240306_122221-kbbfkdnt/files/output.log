@@ -1,0 +1,5 @@
+<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>
+==============<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>==============
+lr: 0.01
+ds wegihts: [0.50196078 0.25098039 0.1254902  0.0627451  0.03137255 0.01568627
+ 0.00784314 0.00392157]

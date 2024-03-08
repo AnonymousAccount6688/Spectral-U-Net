@@ -1,0 +1,35 @@
+<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>
+==============<class 'dynamic_network_architectures.architectures.unet.PlainConvUNet'>==============
+lr: 0.01
+ds wegihts: [0.50196078 0.25098039 0.1254902  0.0627451  0.03137255 0.01568627
+ 0.00784314 0.00392157]
+loading from : /scratch365/ypeng4/data/result/Dataset203_Liver/LiverTrainer__nnUNetPlans__2d/unknown_my_unet_FusedMBConv_16/fold_0/checkpoint_latest.pth
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 12, 'patch_size': [512, 512], 'median_image_size_in_voxels': [512.0, 512.0], 'spacing': [0.767578125, 0.767578125], 'normalization_schemes': ['CTNormalization'], 'use_mask_for_norm': [False], 'UNet_class_name': 'PlainConvUNet', 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [7, 7], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True}
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset203_Liver', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [1.0, 0.767578125, 0.767578125], 'original_median_shape_after_transp': [427, 512, 512], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 5420.0, 'mean': 99.34948501832088, 'median': 101.0, 'min': -983.0, 'percentile_00_5': -16.0, 'percentile_99_5': 197.0, 'std': 37.19241514486267}}}
+2024-03-06 12:25:33.948400: unpacking dataset...
+multiprocessing.pool.RemoteTraceback:
+"""
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/dataloading/utils.py", line 17, in _convert_to_npy
+    np.save(npz_file[:-4] + "_seg.npy", a['seg'])
+  File "<__array_function__ internals>", line 180, in save
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/site-packages/numpy/lib/npyio.py", line 502, in save
+    format.write_array(fid, arr, allow_pickle=allow_pickle,
+OSError: [Errno 5] Input/output error
+"""
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/dataloading/utils.py", line 33, in unpack_dataset
+    p.starmap(_convert_to_npy, zip(npz_files,
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 372, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python38/lib/python3.8/multiprocessing/pool.py", line 771, in get
+    raise self._value
+OSError: [Errno 5] Input/output error
